@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interdimensional Cable TV</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000;
+            font-family: 'Courier New', monospace;
+            color: #00ff00;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .tv-container {
+            position: relative;
+            width: 90vw;
+            height: 90vh;
+            max-width: 1200px;
+            max-height: 800px;
+            background: #222;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 
+                0 0 50px rgba(0, 255, 0, 0.3),
+                inset 0 0 50px rgba(0, 0, 0, 0.8);
+        }
+
+        .screen {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 3px solid #333;
+        }
+
+        .video-player {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .channel-info {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px 25px;
+            border-radius: 10px;
+            border: 2px solid #00ff00;
+            z-index: 10;
+            transition: opacity 0.3s ease;
+        }
+
+        .channel-number {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .channel-name {
+            font-size: 1.2em;
+            opacity: 0.8;
+        }
+
+        .controls-info {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px 25px;
+            border-radius: 10px;
+            border: 2px solid #00ff00;
+            z-index: 10;
+            font-size: 0.9em;
+            text-align: right;
+        }
+
+        .static {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(255, 255, 255, 0.03) 2px,
+                    rgba(255, 255, 255, 0.03) 4px
+                );
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2em;
+            z-index: 15;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        .fade-out {
+            opacity: 0 !important;
+        }
+
+        .scanlines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(0, 255, 0, 0.02) 2px,
+                rgba(0, 255, 0, 0.02) 4px
+            );
+            pointer-events: none;
+            z-index: 6;
+        }
+    </style>
+</head>
+<body>
+    <div class="tv-container">
+        <div class="screen">
+            <video class="video-player" id="videoPlayer" autoplay muted loop></video>
+            <div class="static"></div>
+            <div class="scanlines"></div>
+            <div class="loading" id="loading">LOADING...</div>
+            
+            <div class="channel-info" id="channelInfo">
+                <div class="channel-number" id="channelNumber">CH 1</div>
+                <div class="channel-name" id="channelName">Generated Videos</div>
+            </div>
+            
+            <div class="controls-info">
+                <div>↑↓ Change Channel</div>
+                <div>SPACE Play/Pause</div>
+                <div>M Mute/Unmute</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        class TVChannelApp {
+            constructor() {
+                this.channels = [
+                    {
+                        name: "Generated Videos",
+                        folder: "generated_videos",
+                        videos: [
+                            "20250927_185646_Eagle Soaring Through Mountains.mp4",
+                            "20250927_185649_The Bureaucracy of Dreams.mp4",
+                            "20250927_185652_Classic Green Phosphor CRT.mp4"
+                        ]
+                    },
+                    {
+                        name: "Random Veo3 Videos",
+                        folder: "random_veo3_videos",
+                        videos: [
+                            "10123585348515640765_sample_0.mp4",
+                            "10193657387517450896_sample_0.mp4",
+                            "10390127323114874662_sample_0.mp4",
+                            "10390127323114874662_sample_1.mp4",
+                            "10503882347429956453_sample_0.mp4",
+                            "10504716276133257948_sample_0.mp4",
+                            "10510191311918618877_sample_0.mp4",
+                            "10510191311918618877_sample_1.mp4",
+                            "10510191311918618877_sample_2.mp4",
+                            "10510191311918618877_sample_3.mp4",
+                            "10596042223196304521_sample_0.mp4",
+                            "10757642506092558480_sample_0.mp4",
+                            "10814650266122705809_sample_0.mp4",
+                            "11073989591849392520_sample_0.mp4",
+                            "11073989591849392520_sample_1.mp4",
+                            "11155301705095052076_sample_0.mp4",
+                            "11155301705095052076_sample_1.mp4",
+                            "11283686130059592402_sample_0.mp4",
+                            "11283686130059592402_sample_1.mp4",
+                            "11283686130059592402_sample_2.mp4",
+                            "11283686130059592402_sample_3.mp4",
+                            "1144946879034760902_sample_0.mp4",
+                            "11664459747241529020_sample_0.mp4",
+                            "11664459747241529020_sample_1.mp4",
+                            "12139061035931892305_sample_0.mp4",
+                            "12139061035931892305_sample_1.mp4",
+                            "12139061035931892305_sample_2.mp4",
+                            "12269320888437825426_sample_0.mp4",
+                            "12269320888437825426_sample_1.mp4",
+                            "12269320888437825426_sample_2.mp4",
+                            "12269320888437825426_sample_3.mp4",
+                            "12446973863264507931_sample_0.mp4",
+                            "12704110468708591730_sample_0.mp4",
+                            "12704110468708591730_sample_1.mp4",
+                            "12890996862495967556_sample_0.mp4",
+                            "12890996862495967556_sample_1.mp4",
+                            "12922315363010371959_sample_0.mp4",
+                            "12922315363010371959_sample_1.mp4",
+                            "13150035617662913654_sample_0.mp4",
+                            "13324848867017492898_sample_0.mp4",
+                            "1378830929032276860_sample_0.mp4",
+                            "1378830929032276860_sample_1.mp4",
+                            "14275243446729775914_sample_0.mp4",
+                            "14352732895889353469_sample_0.mp4",
+                            "14352732895889353469_sample_1.mp4",
+                            "14767695623355898545_sample_0.mp4",
+                            "14869035497990027672_sample_0.mp4",
+                            "14869035497990027672_sample_1.mp4",
+                            "14944801060745171890_sample_0.mp4",
+                            "15092914562746781415_sample_0.mp4",
+                            "15092914562746781415_sample_1.mp4",
+                            "15092914562746781415_sample_2.mp4",
+                            "15092914562746781415_sample_3.mp4",
+                            "15134902865771476702_sample_0.mp4",
+                            "15134902865771476702_sample_1.mp4",
+                            "15170465212982371282_sample_0.mp4",
+                            "15170465212982371282_sample_1.mp4",
+                            "1530582792755837296_sample_0.mp4",
+                            "15802008945571429597_sample_0.mp4",
+                            "15802008945571429597_sample_1.mp4",
+                            "15835210698266020666_sample_0.mp4",
+                            "15835210698266020666_sample_1.mp4",
+                            "15838524749157557837_sample_0.mp4",
+                            "1584085457615316666_sample_0.mp4",
+                            "1584085457615316666_sample_1.mp4",
+                            "15875622770098120935_sample_0.mp4",
+                            "15875622770098120935_sample_1.mp4",
+                            "15991033400287992487_sample_0.mp4",
+                            "15991033400287992487_sample_1.mp4",
+                            "16024835778064640208_sample_0.mp4",
+                            "16024835778064640208_sample_1.mp4",
+                            "16049212474103351454_sample_0.mp4",
+                            "16049212474103351454_sample_1.mp4",
+                            "16403483420694253044_sample_0.mp4",
+                            "16477995778050654508_sample_0.mp4",
+                            "16477995778050654508_sample_1.mp4",
+                            "16513334433660110817_sample_0.mp4",
+                            "16513334433660110817_sample_1.mp4",
+                            "16513334433660110817_sample_2.mp4",
+                            "16556297575520889135_sample_0.mp4",
+                            "16556297575520889135_sample_1.mp4",
+                            "16556297575520889135_sample_2.mp4",
+                            "16556297575520889135_sample_3.mp4",
+                            "16625356584439147317_sample_0.mp4",
+                            "16625356584439147317_sample_1.mp4",
+                            "16639021889238043278_sample_0.mp4",
+                            "16639021889238043278_sample_1.mp4",
+                            "16766232494797234515_sample_0.mp4",
+                            "16766232494797234515_sample_1.mp4",
+                            "17141944214878745154_sample_0.mp4",
+                            "1720839829554553328_sample_0.mp4",
+                            "17865685365678684544_sample_0.mp4",
+                            "17865685365678684544_sample_1.mp4",
+                            "17865685365678684544_sample_2.mp4",
+                            "17865685365678684544_sample_3.mp4"
+                        ]
+                    }
+                ];
+
+                this.currentChannel = 0;
+                this.currentVideoIndex = 0;
+                this.videoPlayer = document.getElementById('videoPlayer');
+                this.channelNumber = document.getElementById('channelNumber');
+                this.channelName = document.getElementById('channelName');
+                this.channelInfo = document.getElementById('channelInfo');
+                this.loading = document.getElementById('loading');
+
+                this.init();
+            }
+
+            init() {
+                this.setupEventListeners();
+                this.shuffleCurrentChannelVideos();
+                this.loadCurrentVideo();
+                
+                // Hide channel info after 3 seconds
+                setTimeout(() => {
+                    this.hideChannelInfo();
+                }, 3000);
+            }
+
+            setupEventListeners() {
+                document.addEventListener('keydown', (e) => {
+                    switch(e.code) {
+                        case 'ArrowUp':
+                            e.preventDefault();
+                            this.changeChannel(1);
+                            break;
+                        case 'ArrowDown':
+                            e.preventDefault();
+                            this.changeChannel(-1);
+                            break;
+                        case 'Space':
+                            e.preventDefault();
+                            this.togglePlayPause();
+                            break;
+                        case 'KeyM':
+                            e.preventDefault();
+                            this.toggleMute();
+                            break;
+                    }
+                });
+
+                this.videoPlayer.addEventListener('ended', () => {
+                    this.playNextVideo();
+                });
+
+                this.videoPlayer.addEventListener('loadstart', () => {
+                    this.showLoading();
+                });
+
+                this.videoPlayer.addEventListener('canplay', () => {
+                    this.hideLoading();
+                });
+
+                this.videoPlayer.addEventListener('error', () => {
+                    console.error('Video failed to load, trying next video');
+                    this.playNextVideo();
+                });
+            }
+
+            shuffleCurrentChannelVideos() {
+                const channel = this.channels[this.currentChannel];
+                // Fisher-Yates shuffle
+                for (let i = channel.videos.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [channel.videos[i], channel.videos[j]] = [channel.videos[j], channel.videos[i]];
+                }
+                this.currentVideoIndex = 0;
+            }
+
+            changeChannel(direction) {
+                this.currentChannel = (this.currentChannel + direction + this.channels.length) % this.channels.length;
+                this.shuffleCurrentChannelVideos();
+                this.updateChannelDisplay();
+                this.loadCurrentVideo();
+                this.showChannelInfo();
+                
+                // Hide channel info after 3 seconds
+                setTimeout(() => {
+                    this.hideChannelInfo();
+                }, 3000);
+            }
+
+            updateChannelDisplay() {
+                this.channelNumber.textContent = `CH ${this.currentChannel + 1}`;
+                this.channelName.textContent = this.channels[this.currentChannel].name;
+            }
+
+            loadCurrentVideo() {
+                const channel = this.channels[this.currentChannel];
+                const videoFile = channel.videos[this.currentVideoIndex];
+                const videoPath = `${channel.folder}/${videoFile}`;
+                
+                this.showLoading();
+                this.videoPlayer.src = videoPath;
+                this.videoPlayer.load();
+            }
+
+            playNextVideo() {
+                const channel = this.channels[this.currentChannel];
+                this.currentVideoIndex = (this.currentVideoIndex + 1) % channel.videos.length;
+                
+                // If we've gone through all videos, shuffle again
+                if (this.currentVideoIndex === 0) {
+                    this.shuffleCurrentChannelVideos();
+                }
+                
+                this.loadCurrentVideo();
+            }
+
+            togglePlayPause() {
+                if (this.videoPlayer.paused) {
+                    this.videoPlayer.play();
+                } else {
+                    this.videoPlayer.pause();
+                }
+            }
+
+            toggleMute() {
+                this.videoPlayer.muted = !this.videoPlayer.muted;
+            }
+
+            showChannelInfo() {
+                this.channelInfo.classList.remove('fade-out');
+            }
+
+            hideChannelInfo() {
+                this.channelInfo.classList.add('fade-out');
+            }
+
+            showLoading() {
+                this.loading.style.display = 'block';
+            }
+
+            hideLoading() {
+                this.loading.style.display = 'none';
+            }
+        }
+
+        // Start the app when the page loads
+        window.addEventListener('DOMContentLoaded', () => {
+            new TVChannelApp();
+        });
+    </script>
+</body>
+</html>

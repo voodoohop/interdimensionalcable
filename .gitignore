@@ -1,0 +1,61 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+.env
+.venv/
+venv/
+*.log
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Video files (large media)
+channels/
+channels_clustered/
+generated_videos/
+init/
+*.mp4
+*.webm
+*.mov
+*.avi
+*.mkv
+
+# Media artifacts
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+
+# Video embeddings cache
+video_embeddings_cache/
+
+# Cloudflare
+.wrangler/
+wrangler-output/
+
+# Backups
+backup/
+*.bak
+*.json.bak
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+tmp/
+temp/
+*.tmp
