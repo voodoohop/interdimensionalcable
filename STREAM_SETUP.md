@@ -56,6 +56,15 @@ python3 update_channels_with_stream.py
 
 ## Step 4: Test Locally
 
+**Option A: Use Stream-Specific HTML (Recommended)**
+```bash
+# Open the Stream-compatible version
+open tv_clustered_stream.html
+```
+
+This version is specifically designed for Cloudflare Stream and uses iframe embeds.
+
+**Option B: Modify Original HTML**
 1. Edit `tv_clustered.html` line ~80:
    ```javascript
    // Change this:
@@ -76,10 +85,14 @@ python3 update_channels_with_stream.py
 # Create public directory
 mkdir -p public
 
-# Copy files
-cp tv_clustered.html public/
-cp index.html public/
-cp channels_clustered_stream.json public/channels_clustered.json
+# Copy Stream version (recommended)
+cp tv_clustered_stream.html public/index.html
+cp channels_clustered_stream.json public/channels_clustered_stream.json
+
+# Or copy original version
+# cp tv_clustered.html public/
+# cp index.html public/
+# cp channels_clustered_stream.json public/channels_clustered.json
 
 # Deploy
 wrangler pages deploy public --project-name interdimensional-cable
