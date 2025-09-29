@@ -10,6 +10,8 @@ import requests
 import time
 from pathlib import Path
 from typing import Dict, List
+from concurrent.futures import ThreadPoolExecutor, as_completed
+import threading
 
 # Get Cloudflare credentials from environment or prompt
 ACCOUNT_ID = os.getenv('CLOUDFLARE_ACCOUNT_ID', 'efdcb0933eaac64f27c0b295039b28f2')
@@ -146,14 +148,16 @@ def main():
     
     # Start with existing results
     results = existing_results.copy()
+    results_lock = threading.Lock()
     start_time = time.time()
     start_count = len(results)
+    completed_count = 0
     
-    for idx, (video_path, cluster_name, cluster_number) in enumerate(videos_to_upload, 1):
+    def upload_with_metadata(video_info):
+        """Upload a single video with its metadata"""
+        video_path, cluster_name, cluster_number = video_info
         filename = os.path.basename(video_path)
-        current_total = start_count + idx
         
-        # Create metadata
         metadata = {
             'cluster': cluster_name,
             'cluster_number': cluster_number,
@@ -161,21 +165,42 @@ def main():
             'channel': f"Cluster {cluster_number}"
         }
         
-        print(f"\n[{current_total}/{total_videos}] {cluster_name}/{filename}")
-        
         result = upload_video(video_path, metadata)
-        results.append(result)
+        return result, filename
+    
+    # Upload with concurrency
+    max_workers = 5
+    print(f"⚡ Using {max_workers} concurrent uploads\n")
+    
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        # Submit all upload tasks
+        future_to_video = {
+            executor.submit(upload_with_metadata, video_info): video_info 
+            for video_info in videos_to_upload
+        }
         
-        # Rate limiting - small delay between uploads
-        time.sleep(0.5)
-        
-        # Save progress every 10 videos
-        if idx % 10 == 0:
-            save_results(results, 'stream_upload_progress.json')
-            elapsed = time.time() - start_time
-            avg_time = elapsed / idx
-            eta = avg_time * (remaining_videos - idx)
-            print(f"\n⏱️  Progress: {current_total}/{total_videos} | Remaining: {remaining_videos - idx} | ETA: {int(eta/60)}m {int(eta%60)}s")
+        # Process completed uploads
+        for future in as_completed(future_to_video):
+            video_info = future_to_video[future]
+            
+            try:
+                result, filename = future.result()
+                
+                with results_lock:
+                    results.append(result)
+                    completed_count = len(results) - start_count
+                    current_total = len(results)
+                    
+                    # Save progress every 10 videos
+                    if completed_count % 10 == 0:
+                        save_results(results, 'stream_upload_progress.json')
+                        elapsed = time.time() - start_time
+                        avg_time = elapsed / completed_count
+                        eta = avg_time * (remaining_videos - completed_count)
+                        print(f"\n⏱️  Progress: {current_total}/{total_videos} | Remaining: {remaining_videos - completed_count} | ETA: {int(eta/60)}m {int(eta%60)}s")
+                        
+            except Exception as e:
+                print(f"❌ Error processing upload: {e}")
     
     # Save final results
     save_results(results, 'stream_upload_results.json')
