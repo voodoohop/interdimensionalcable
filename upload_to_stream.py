@@ -94,29 +94,64 @@ def main():
     print(f"Account ID: {ACCOUNT_ID}")
     print()
     
+    # Check for existing progress
+    progress_file = 'stream_upload_progress.json'
+    existing_results = []
+    uploaded_filenames = set()
+    
+    if Path(progress_file).exists():
+        try:
+            with open(progress_file, 'r') as f:
+                progress_data = json.load(f)
+                existing_results = progress_data.get('results', [])
+                uploaded_filenames = {r['filename'] for r in existing_results if r.get('success')}
+            print(f"📥 Found existing progress: {len(uploaded_filenames)} videos already uploaded")
+            print()
+        except Exception as e:
+            print(f"⚠️  Warning: Could not read progress file: {e}")
+    
     # Scan videos
     print("📂 Scanning videos...")
     videos = scan_videos()
     total_videos = len(videos)
     
-    print(f"Found {total_videos} videos across {len(set(v[1] for v in videos))} clusters")
+    # Filter out already uploaded videos
+    videos_to_upload = []
+    for video_path, cluster_name, cluster_number in videos:
+        filename = os.path.basename(video_path)
+        if filename not in uploaded_filenames:
+            videos_to_upload.append((video_path, cluster_name, cluster_number))
+    
+    remaining_videos = len(videos_to_upload)
+    
+    print(f"Found {total_videos} total videos")
+    print(f"Already uploaded: {len(uploaded_filenames)} videos")
+    print(f"Remaining: {remaining_videos} videos")
     print()
     
+    if remaining_videos == 0:
+        print("✅ All videos already uploaded!")
+        print("Creating final results file...")
+        save_results(existing_results, 'stream_upload_results.json')
+        return
+    
     # Confirm upload
-    response = input(f"📤 Upload {total_videos} videos to Cloudflare Stream? (y/n): ")
+    response = input(f"📤 Upload remaining {remaining_videos} videos to Cloudflare Stream? (y/n): ")
     if response.lower() != 'y':
         print("❌ Upload cancelled")
         return
     
-    print("\n🚀 Starting upload...")
+    print("\n🚀 Starting/Resuming upload...")
     print("=" * 60)
     
-    # Upload all videos
-    results = []
+    # Start with existing results
+    results = existing_results.copy()
     start_time = time.time()
+    start_count = len(results)
     
-    for idx, (video_path, cluster_name, cluster_number) in enumerate(videos, 1):
+    for idx, (video_path, cluster_name, cluster_number) in enumerate(videos_to_upload, 1):
         filename = os.path.basename(video_path)
+        current_total = start_count + idx
         
         # Create metadata
         metadata = {
@@ -126,7 +161,7 @@ def main():
             'channel': f"Cluster {cluster_number}"
         }
         
-        print(f"\n[{idx}/{total_videos}] {cluster_name}/{filename}")
+        print(f"\n[{current_total}/{total_videos}] {cluster_name}/{filename}")
         
         result = upload_video(video_path, metadata)
         results.append(result)
@@ -139,8 +174,8 @@ def main():
             save_results(results, 'stream_upload_progress.json')
             elapsed = time.time() - start_time
             avg_time = elapsed / idx
-            eta = avg_time * (total_videos - idx)
-            print(f"\n⏱️  Progress: {idx}/{total_videos} | ETA: {int(eta/60)}m {int(eta%60)}s")
+            eta = avg_time * (remaining_videos - idx)
+            print(f"\n⏱️  Progress: {current_total}/{total_videos} | Remaining: {remaining_videos - idx} | ETA: {int(eta/60)}m {int(eta%60)}s")
     
     # Save final results
     save_results(results, 'stream_upload_results.json')
