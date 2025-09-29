@@ -230,7 +230,7 @@
             async loadChannels() {
                 try {
                     this.showLoading();
-                    const response = await fetch('channels_clustered_stream.json');
+                    const response = await fetch('channels_clustered_stream_test.json');
                     this.channels = await response.json();
                     
                     if (this.channels.length === 0) {
