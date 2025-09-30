@@ -1,43 +1,31 @@
-# 🎭 Interdimensional Cable Channel Generator
+# 🎭 Interdimensional Cable TV
 
-**Gaswerksiedlung Birthday Special** - Surreal retrofuturist video generation using Google's Veo 3 API
+**AI-Generated Video Art Installation** - Semantic video clustering and streaming using Veo 3, CLIP, and Cloudflare Stream
 
-## 🎯 Project Status: FULLY OPERATIONAL ✅
+## 🎯 Project Status: PRODUCTION READY ✅
 
-### ✅ Completed Setup:
-- **Google Cloud Project**: `pollinations-430910` (pollinations.ai organization)
-- **Service Account**: `vertex-express@pollinations-430910.iam.gserviceaccount.com`
-- **Organization Policies**: All 5 IAM policies successfully overridden at organization level
-- **Vertex AI API**: Enabled and accessible with proper quota
-- **Authentication**: Working with gcloud credentials (API keys don't work with Vertex AI)
+### ✅ System Overview:
+- **Videos Generated**: 1,000+ unique AI-generated videos
+- **Semantic Clusters**: 67 thematic channels organized by CLIP embeddings
+- **Streaming**: Cloudflare Stream CDN for global delivery
+- **TV Interface**: Retro CRT-styled web app with channel surfing
+- **Google Cloud Project**: `pollinations-430910` (pollinations.ai)
+- **Authentication**: gcloud credentials for Veo 3 API access
 
-### 🛠️ Files Created:
+## 📁 Project Structure
 
-#### 🎭 Interdimensional Cable Scripts
-- **`interdimensional_cable_generator.py`** - Main channel generator with Stanislaw Lem-inspired prompts
-- **`crt_poster_variations.py`** - CRT poster opening frame variations generator
-- **`veo3_test.py`** - Core Veo 3 API test script (updated with correct project)
+**See [`PROJECT_ORGANIZATION.md`](PROJECT_ORGANIZATION.md) for complete file organization guide.**
 
-#### 📺 CRT Poster Variations
-- **Classic Green Phosphor** - Authentic 1980s CRT monitor aesthetic
-- **Amber Terminal Style** - Vintage computer terminal display
-- **Glitchy Broadcast Interference** - Heavy analog TV artifacts
-- **Holographic Projection** - Retrofuturistic hologram display
-- **VHS Tape Playback** - Consumer VHS recording quality
-
-#### 🚀 Surreal Video Concepts (Stanislaw Lem Inspired)
-- **The Memory Synthesizer** - Chrome laboratory with crystalline memory device
-- **The Probability Garden** - Quantum botanical garden with multiple states
-- **The Bureaucracy of Dreams** - Surreal office processing dreams as paperwork
-- **The Temporal Archaeologist** - Excavating layers of time itself
-- **The Emotion Factory** - Industrial complex manufacturing emotions
-- **The Solaris Communication Station** - Decoding messages from sentient ocean
-- **The Metamorphosis Chamber** - Voluntary transformation into abstract concepts
-- **The Library of Unwritten Books** - Self-writing books and impossible narratives
-
-#### Configuration Files
-- **`org-disable-*.yaml`** - Organization policy override files (5 total)
-- **`requirements.txt`** - Python dependencies
+### Key Directories:
+- **`/scripts/`** - All Python scripts organized by function
+  - `/veo_generation/` - Veo 3 video generation tools
+  - `/clustering/` - Semantic clustering with CLIP
+  - `/stream_upload/` - Cloudflare Stream upload tools
+  - `/utilities/` - Helper scripts
+- **`/html_apps/`** - Web TV applications
+- **`/channels_reclustered_all/`** - 67 semantic video clusters
+- **`/docs/`** - Documentation and reports
+- **`/archived/`** - Outdated/one-time scripts
 
 ## 🚀 Quick Start
 

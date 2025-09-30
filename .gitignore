@@ -21,8 +21,12 @@ Thumbs.db
 # Video files (large media)
 channels/
 channels_clustered/
+channels_reclustered_all/
 generated_videos/
 init/
+videos_combined_for_clustering/
+videos_combined_for_clustering_wrapped/
+new_videos_staging/
 *.mp4
 *.webm
 *.mov
@@ -43,10 +47,14 @@ video_embeddings_cache/
 .wrangler/
 wrangler-output/
 
-# Backups
+# Backups & Archives
 backup/
+archived/
 *.bak
 *.json.bak
+
+# Large result files
+stream_upload_results.json
 
 # IDE
 .vscode/
