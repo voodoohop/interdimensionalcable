@@ -9,6 +9,12 @@ __pycache__/
 venv/
 *.log
 
+# API Keys & Secrets
+api_keys.txt
+credentials.txt
+secrets.local
+config.local
+
 # OS
 .DS_Store
 .DS_Store?
