@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Interdimensional Cable TV</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: #000;
+            color: #00ff00;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px #00ff00;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.8;
+            margin-bottom: 50px;
+        }
+
+        .viewers {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .viewer-card {
+            background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
+            border: 3px solid #00ff00;
+            border-radius: 15px;
+            padding: 30px;
+            width: 350px;
+            text-decoration: none;
+            color: #00ff00;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 30px rgba(0, 255, 0, 0.2);
+        }
+
+        .viewer-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 50px rgba(0, 255, 0, 0.5);
+            border-color: #00ffff;
+        }
+
+        .viewer-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .viewer-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .viewer-description {
+            font-size: 0.9em;
+            opacity: 0.7;
+            line-height: 1.5;
+        }
+
+        .viewer-features {
+            margin-top: 15px;
+            font-size: 0.85em;
+            opacity: 0.6;
+            text-align: left;
+        }
+
+        .viewer-features li {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎬 Interdimensional Cable TV</h1>
+        <div class="subtitle">Choose Your Viewing Experience</div>
+        
+        <div class="viewers">
+            <a href="index.html" class="viewer-card">
+                <div class="viewer-icon">📺</div>
+                <div class="viewer-title">Clustered Channels</div>
+                <div class="viewer-description">
+                    Browse curated channels of thematically similar videos. Switch between channels like traditional TV.
+                </div>
+                <ul class="viewer-features">
+                    <li>↑↓ Change channels</li>
+                    <li>← → Skip videos</li>
+                    <li>R Random channel</li>
+                </ul>
+            </a>
+
+            <a href="embedding_flow.html" class="viewer-card">
+                <div class="viewer-icon">🌊</div>
+                <div class="viewer-title">Embedding Flow</div>
+                <div class="viewer-description">
+                    Experience a continuous flow where each video seamlessly transitions to the most similar one.
+                </div>
+                <ul class="viewer-features">
+                    <li>AI-powered similarity</li>
+                    <li>← → Navigate history</li>
+                    <li>R Random jump</li>
+                </ul>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
