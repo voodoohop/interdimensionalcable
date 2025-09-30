@@ -369,6 +369,7 @@
                 this.loadVideos();
                 this.setupControls();
                 this.setupVideoEvents();
+                this.setupURLHandling();
             }
 
             setupClickToStart() {
@@ -414,12 +415,19 @@
 
                     console.log(`Loaded ${this.videos.length} videos with embeddings`);
                     
-                    // Start with a random video
-                    this.currentIndex = Math.floor(Math.random() * this.videos.length);
+                    // Check URL for video index
+                    const urlIndex = this.getVideoIndexFromURL();
+                    if (urlIndex !== null && urlIndex >= 0 && urlIndex < this.videos.length) {
+                        this.currentIndex = urlIndex;
+                    } else {
+                        // Start with a random video
+                        this.currentIndex = Math.floor(Math.random() * this.videos.length);
+                    }
                     this.watchHistory.push(this.currentIndex);
                     
                     this.updateVideoDisplay();
                     this.loadCurrentVideo();
+                    this.updateURL();
                     this.showVideoInfo();
                     
                     setTimeout(() => this.hideVideoInfo(), 3000);
@@ -611,6 +619,7 @@
                 
                 this.updateVideoDisplay();
                 this.loadCurrentVideo();
+                this.updateURL();
                 this.showVideoInfo();
                 setTimeout(() => this.hideVideoInfo(), 2000);
             }
@@ -624,6 +633,7 @@
                     
                     this.updateVideoDisplay();
                     this.loadCurrentVideo();
+                    this.updateURL();
                     this.showVideoInfo();
                     setTimeout(() => this.hideVideoInfo(), 2000);
                 }
@@ -638,6 +648,7 @@
                 
                 this.updateVideoDisplay();
                 this.loadCurrentVideo();
+                this.updateURL();
                 this.showVideoInfo();
                 setTimeout(() => this.hideVideoInfo(), 2000);
             }
@@ -677,6 +688,39 @@
                 errorDiv.textContent = message;
                 document.querySelector('.screen').appendChild(errorDiv);
                 this.hideLoading();
+            }
+
+            setupURLHandling() {
+                // Listen for hash changes (back/forward navigation)
+                window.addEventListener('hashchange', () => {
+                    const urlIndex = this.getVideoIndexFromURL();
+                    if (urlIndex !== null && urlIndex !== this.currentIndex) {
+                        this.currentIndex = urlIndex;
+                        this.watchHistory.push(urlIndex);
+                        this.lastSimilarity = null;
+                        
+                        this.updateVideoDisplay();
+                        this.loadCurrentVideo();
+                        this.showVideoInfo();
+                        setTimeout(() => this.hideVideoInfo(), 3000);
+                    }
+                });
+            }
+
+            getVideoIndexFromURL() {
+                const hash = window.location.hash;
+                if (hash.startsWith('#v')) {
+                    const index = parseInt(hash.substring(2));
+                    if (!isNaN(index) && index >= 0) {
+                        return index;
+                    }
+                }
+                return null;
+            }
+
+            updateURL() {
+                // Update URL hash without triggering hashchange event
+                window.history.replaceState(null, '', `#v${this.currentIndex}`);
             }
         }
 
