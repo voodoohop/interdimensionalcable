@@ -338,6 +338,37 @@
         .start-button:active {
             transform: scale(0.95);
         }
+
+        .fullscreen-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid rgba(0, 255, 0, 0.5);
+            border-radius: 8px;
+            padding: 12px;
+            cursor: pointer;
+            z-index: 10;
+            color: #00ff00;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .fullscreen-button:hover {
+            background: rgba(0, 255, 0, 0.2);
+            border-color: #00ff00;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.4);
+        }
+
+        .fullscreen-button:active {
+            transform: scale(0.9);
+        }
+
+        .fullscreen-button svg {
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -359,7 +390,14 @@
                 <div>↑↓ Change Channel</div>
                 <div>← → Skip Video</div>
                 <div>R Random Channel</div>
+                <div>F Fullscreen</div>
             </div>
+            
+            <button class="fullscreen-button" id="fullscreenButton" title="Fullscreen (F)">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+                </svg>
+            </button>
             
             <div class="start-screen" id="startScreen">
                 <div class="start-content">
@@ -387,6 +425,7 @@
                 this.loading = document.getElementById('loading');
 
                 this.setupStartButton();
+                this.setupFullscreen();
                 this.loadChannels();
                 this.setupControls();
                 this.setupVideoEvents();
@@ -402,6 +441,25 @@
                     this.video.muted = false; // Unmute on user interaction
                     this.video.play().catch(e => console.log('Play error:', e));
                 });
+            }
+
+            setupFullscreen() {
+                const fullscreenButton = document.getElementById('fullscreenButton');
+                const tvContainer = document.querySelector('.tv-container');
+                
+                fullscreenButton.addEventListener('click', () => {
+                    this.toggleFullscreen(tvContainer);
+                });
+            }
+
+            toggleFullscreen(element) {
+                if (!document.fullscreenElement) {
+                    element.requestFullscreen().catch(err => {
+                        console.log('Fullscreen error:', err);
+                    });
+                } else {
+                    document.exitFullscreen();
+                }
             }
 
             async loadChannels() {
@@ -459,6 +517,10 @@
                         case 'KeyR':
                             e.preventDefault();
                             this.randomChannel();
+                            break;
+                        case 'KeyF':
+                            e.preventDefault();
+                            this.toggleFullscreen(document.querySelector('.tv-container'));
                             break;
                     }
                 });
