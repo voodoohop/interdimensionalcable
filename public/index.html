@@ -282,62 +282,6 @@
             display: block !important;
         }
 
-        .start-screen {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            z-index: 20;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .start-screen.hidden {
-            display: none;
-        }
-
-        .start-content {
-            text-align: center;
-        }
-
-        .start-content h1 {
-            font-size: 3em;
-            margin-bottom: 20px;
-            text-shadow: 0 0 20px #00ff00;
-        }
-
-        .start-content p {
-            font-size: 1.2em;
-            margin-bottom: 30px;
-            opacity: 0.8;
-        }
-
-        .start-button {
-            font-family: 'Courier New', monospace;
-            font-size: 1.5em;
-            padding: 20px 50px;
-            background: #00ff00;
-            color: #000;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            font-weight: bold;
-            box-shadow: 0 0 30px rgba(0, 255, 0, 0.5);
-            transition: all 0.3s ease;
-        }
-
-        .start-button:hover {
-            background: #00cc00;
-            box-shadow: 0 0 50px rgba(0, 255, 0, 0.8);
-            transform: scale(1.05);
-        }
-
-        .start-button:active {
-            transform: scale(0.95);
-        }
 
         .fullscreen-button {
             position: absolute;
@@ -399,13 +343,6 @@
                 </svg>
             </button>
             
-            <div class="start-screen" id="startScreen">
-                <div class="start-content">
-                    <h1>🎬 Interdimensional Cable TV</h1>
-                    <p>894 videos across 67 semantic channels</p>
-                    <button class="start-button" id="startButton">START WATCHING</button>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -424,22 +361,23 @@
                 this.channelInfo = document.getElementById('channelInfo');
                 this.loading = document.getElementById('loading');
 
-                this.setupStartButton();
+                this.hasStarted = false;
                 this.setupFullscreen();
+                this.setupClickToStart();
                 this.loadChannels();
                 this.setupControls();
                 this.setupVideoEvents();
                 this.setupURLHandling();
             }
 
-            setupStartButton() {
-                const startButton = document.getElementById('startButton');
-                const startScreen = document.getElementById('startScreen');
-                
-                startButton.addEventListener('click', () => {
-                    startScreen.classList.add('hidden');
-                    this.video.muted = false; // Unmute on user interaction
-                    this.video.play().catch(e => console.log('Play error:', e));
+            setupClickToStart() {
+                // Click anywhere on the screen to start with audio
+                document.querySelector('.screen').addEventListener('click', () => {
+                    if (!this.hasStarted) {
+                        this.hasStarted = true;
+                        this.video.muted = false;
+                        this.video.play().catch(e => console.log('Play error:', e));
+                    }
                 });
             }
 
