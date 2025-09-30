@@ -33,8 +33,9 @@ def upload_video(video_path: str, metadata: Dict) -> Dict:
         "Authorization": f"Bearer {API_TOKEN}"
     }
     
-    # Get video filename
+    # Get video filename and full path
     filename = os.path.basename(video_path)
+    full_path = str(Path(video_path).resolve())
     
     # Prepare multipart form data
     files = {
@@ -65,15 +66,16 @@ def upload_video(video_path: str, metadata: Dict) -> Dict:
                 'playback_url': playback_url,
                 'iframe_url': iframe_url,
                 'filename': filename,
+                'full_path': full_path,
                 'metadata': metadata
             }
         else:
             print(f"   ❌ Failed: {result.get('errors', 'Unknown error')}")
-            return {'success': False, 'filename': filename, 'error': result.get('errors')}
+            return {'success': False, 'filename': filename, 'full_path': full_path, 'error': result.get('errors')}
             
     except Exception as e:
         print(f"   ❌ Error: {str(e)}")
-        return {'success': False, 'filename': filename, 'error': str(e)}
+        return {'success': False, 'filename': filename, 'full_path': full_path, 'error': str(e)}
 
 def scan_videos(base_dir: str = 'channels_reclustered_all') -> List[tuple]:
     """Scan all videos in channels directory"""
@@ -111,8 +113,9 @@ def main():
             with open(progress_file, 'r') as f:
                 progress_data = json.load(f)
                 existing_results = progress_data.get('results', [])
-                uploaded_filenames = {r['filename'] for r in existing_results if r.get('success')}
-            print(f"📥 Found existing progress: {len(uploaded_filenames)} videos already uploaded")
+                # Use full_path if available, fallback to filename for old format
+                uploaded_paths = {r.get('full_path', r['filename']) for r in existing_results if r.get('success')}
+            print(f"📥 Found existing progress: {len(uploaded_paths)} videos already uploaded")
             print()
         except Exception as e:
             print(f"⚠️  Warning: Could not read progress file: {e}")
@@ -125,14 +128,15 @@ def main():
     # Filter out already uploaded videos
     videos_to_upload = []
     for video_path, cluster_name, cluster_number in videos:
-        filename = os.path.basename(video_path)
-        if filename not in uploaded_filenames:
+        full_path = str(Path(video_path).resolve())
+        if full_path not in uploaded_paths:
             videos_to_upload.append((video_path, cluster_name, cluster_number))
     
     remaining_videos = len(videos_to_upload)
+    already_uploaded = len(uploaded_paths)
     
     print(f"Found {total_videos} total videos")
-    print(f"Already uploaded: {len(uploaded_filenames)} videos")
+    print(f"Already uploaded: {already_uploaded} videos")
     print(f"Remaining: {remaining_videos} videos")
     print()
     
@@ -174,7 +178,7 @@ def main():
         return result, filename
     
     # Upload with concurrency
-    max_workers = 5
+    max_workers = 2
     print(f"⚡ Using {max_workers} concurrent uploads\n")
     
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
@@ -194,7 +198,7 @@ def main():
                 with results_lock:
                     results.append(result)
                     completed_count = len(results) - start_count
-                    current_total = len(results)
+                    current_total = already_uploaded + completed_count
                     
                     # Save progress every 10 videos
                     if completed_count % 10 == 0:
