@@ -511,6 +511,12 @@
                     
                     const similarity = this.cosineSimilarity(currentEmbedding, this.videos[i].embedding);
                     
+                    // Skip videos with identical embeddings (similarity = 1.0)
+                    if (similarity >= 0.9999) {
+                        console.log(`Skipping duplicate embedding: ${this.videos[i].filename}`);
+                        continue;
+                    }
+                    
                     if (similarity > bestSimilarity) {
                         bestSimilarity = similarity;
                         bestIndex = i;
