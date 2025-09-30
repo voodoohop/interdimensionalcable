@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interdimensional Cable TV - Clustered Channels</title>
+    <title>🎬 Interdimensional Cable TV - Stream Edition</title>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <style>
         * {
             margin: 0;
@@ -12,50 +13,61 @@
         }
 
         body {
-            background: #000;
             font-family: 'Courier New', monospace;
+            background: #000;
             color: #00ff00;
             overflow: hidden;
             height: 100vh;
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
         }
 
         .tv-container {
-            position: relative;
             width: 90vw;
-            height: 90vh;
-            max-width: 1200px;
-            max-height: 800px;
-            background: #222;
+            max-width: 1400px;
+            height: 85vh;
+            background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
+            border: 15px solid #333;
             border-radius: 20px;
-            padding: 40px;
             box-shadow: 
                 0 0 50px rgba(0, 255, 0, 0.3),
-                inset 0 0 50px rgba(0, 0, 0, 0.8);
+                inset 0 0 30px rgba(0, 0, 0, 0.5);
+            position: relative;
+            padding: 20px;
         }
 
         .screen {
-            position: relative;
             width: 100%;
             height: 100%;
             background: #000;
             border-radius: 10px;
+            position: relative;
             overflow: hidden;
-            border: 3px solid #333;
         }
 
         .video-player {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            object-fit: contain;
-            filter: 
-                brightness(0.85)
-                contrast(0.9)
-                saturate(0.95)
-                sepia(0.05)
-                hue-rotate(-5deg);
+            background: #000;
+            z-index: 1;
+            /* Strong vintage TV filter */
+            filter: sepia(0.6) contrast(1.2) brightness(0.9) saturate(0.7);
+        }
+
+        .loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2em;
+            text-shadow: 0 0 20px #00ff00;
+            z-index: 10;
+            display: none;
+            visibility: hidden;
         }
 
         .channel-info {
@@ -66,7 +78,8 @@
             padding: 20px 30px;
             border-radius: 10px;
             border: 2px solid #00ff00;
-            z-index: 10;
+            z-index: 15;
+            opacity: 0;
             transition: opacity 0.3s ease;
         }
 
@@ -92,13 +105,15 @@
             position: absolute;
             bottom: 20px;
             right: 20px;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.85);
             padding: 15px 25px;
-            border-radius: 10px;
-            border: 2px solid #00ff00;
-            z-index: 10;
-            font-size: 0.9em;
+            border-radius: 5px;
+            border: 2px solid rgba(139, 90, 43, 0.6);
+            z-index: 3;
+            font-size: 0.85em;
             text-align: right;
+            color: rgba(139, 90, 43, 0.9);
+            text-shadow: 0 0 5px rgba(139, 90, 43, 0.3);
         }
 
         .static {
@@ -112,31 +127,21 @@
                     0deg,
                     transparent,
                     transparent 2px,
-                    rgba(255, 255, 255, 0.03) 2px,
-                    rgba(255, 255, 255, 0.03) 4px
+                    rgba(255, 255, 255, 0.08) 2px,
+                    rgba(255, 255, 255, 0.08) 4px
                 );
             pointer-events: none;
             z-index: 5;
+            opacity: 0.8;
+            animation: staticNoise 0.2s infinite;
         }
-
-        .loading {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 2.5em;
-            z-index: 15;
-            animation: blink 1s infinite;
-            text-shadow: 0 0 20px #00ff00;
-        }
-
-        @keyframes blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0.3; }
-        }
-
-        .fade-out {
-            opacity: 0 !important;
+        
+        @keyframes staticNoise {
+            0% { opacity: 0.7; }
+            25% { opacity: 0.85; }
+            50% { opacity: 0.75; }
+            75% { opacity: 0.8; }
+            100% { opacity: 0.7; }
         }
 
         .scanlines {
@@ -145,15 +150,108 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: repeating-linear-gradient(
+            background: 
+            repeating-linear-gradient(
                 0deg,
                 transparent,
                 transparent 2px,
-                rgba(0, 255, 0, 0.02) 2px,
-                rgba(0, 255, 0, 0.02) 4px
+                rgba(139, 90, 43, 0.06) 2px,
+                rgba(139, 90, 43, 0.06) 4px
             );
             pointer-events: none;
             z-index: 6;
+            animation: scanlineMove 8s linear infinite;
+        }
+        
+        @keyframes scanlineMove {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(10px); }
+        }
+
+        /* CRT Screen-Door Effect with Vintage Vignette */
+        .screen::before {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: 
+                radial-gradient(ellipse at center, transparent 0%, rgba(101, 67, 33, 0.4) 100%),
+                linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.35) 50%),
+                linear-gradient(90deg, rgba(139, 90, 43, 0.08), rgba(101, 67, 33, 0.04), rgba(139, 90, 43, 0.08));
+            z-index: 7;
+            background-size: 100% 100%, 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
+
+        /* CRT Flicker Effect */
+        .screen::after {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: rgba(18, 16, 16, 0.1);
+            opacity: 0;
+            z-index: 8;
+            pointer-events: none;
+            animation: flicker 0.15s infinite;
+        }
+
+        @keyframes flicker {
+            0% { opacity: 0.27861; }
+            5% { opacity: 0.34769; }
+            10% { opacity: 0.23604; }
+            15% { opacity: 0.90626; }
+            20% { opacity: 0.18128; }
+            25% { opacity: 0.83891; }
+            30% { opacity: 0.65583; }
+            35% { opacity: 0.67807; }
+            40% { opacity: 0.26559; }
+            45% { opacity: 0.84693; }
+            50% { opacity: 0.96019; }
+            55% { opacity: 0.08594; }
+            60% { opacity: 0.20313; }
+            65% { opacity: 0.71988; }
+            70% { opacity: 0.53455; }
+            75% { opacity: 0.37288; }
+            80% { opacity: 0.71428; }
+            85% { opacity: 0.70419; }
+            90% { opacity: 0.7003; }
+            95% { opacity: 0.36108; }
+            100% { opacity: 0.24387; }
+        }
+
+        /* Animated TV Grain/Noise - Enhanced Vintage */
+        .tv-grain {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="1.2" numOctaves="5" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noise)" opacity="0.12"/></svg>');
+            pointer-events: none;
+            z-index: 9;
+            opacity: 0.7;
+            mix-blend-mode: overlay;
+            animation: grain 0.3s steps(8) infinite;
+        }
+
+        @keyframes grain {
+            0%, 100% { transform: translate(0, 0); }
+            10% { transform: translate(-5%, -10%); }
+            20% { transform: translate(-15%, 5%); }
+            30% { transform: translate(7%, -25%); }
+            40% { transform: translate(-5%, 25%); }
+            50% { transform: translate(-15%, 10%); }
+            60% { transform: translate(15%, 0%); }
+            70% { transform: translate(0%, 15%); }
+            80% { transform: translate(3%, 35%); }
+            90% { transform: translate(-10%, 10%); }
         }
 
         .error {
@@ -179,15 +277,20 @@
             font-size: 0.8em;
             margin-left: 10px;
         }
+
+        .show {
+            display: block !important;
+        }
     </style>
 </head>
 <body>
     <div class="tv-container">
         <div class="screen">
-            <video class="video-player" id="videoPlayer" autoplay muted></video>
+            <video class="video-player" id="videoPlayer" autoplay muted playsinline></video>
             <div class="static"></div>
             <div class="scanlines"></div>
-            <div class="loading" id="loading">LOADING...</div>
+            <div class="tv-grain"></div>
+            <div class="loading" id="loading">LOADING STREAM...</div>
             
             <div class="channel-info" id="channelInfo">
                 <div class="channel-number" id="channelNumber">CH 1</div>
@@ -196,163 +299,133 @@
             </div>
             
             <div class="controls-info">
-                <div><strong>🎬 CLUSTERED CHANNELS</strong></div>
-                <div style="margin-top: 10px;">↑↓ Change Channel</div>
-                <div>SPACE Play/Pause</div>
-                <div>M Mute/Unmute</div>
-                <div>B/V Brightness ±</div>
-                <div>F Filter Presets (1-4)</div>
-                <div id="muteStatus" style="color: #ff6600; margin-top: 5px;">🔇 MUTED - Press any key to enable audio</div>
-                <div id="filterStatus" style="color: #00ff00; margin-top: 5px; font-size: 0.8em;">Filter: Default</div>
+                <div>↑↓ Change Channel</div>
+                <div>← → Skip Video</div>
+                <div>R Random Channel</div>
+                <div>M Toggle Mute</div>
             </div>
         </div>
     </div>
 
     <script>
-        class ClusteredTV {
+        class StreamTV {
             constructor() {
                 this.channels = [];
                 this.currentChannel = 0;
                 this.currentVideoIndex = 0;
-                this.hasUserInteracted = false;
-                this.brightness = 0.85;
-                this.currentFilterPreset = 0;
+                this.hls = null; // HLS.js instance
                 
-                this.videoPlayer = document.getElementById('videoPlayer');
+                this.video = document.getElementById('videoPlayer');
                 this.channelNumber = document.getElementById('channelNumber');
                 this.channelName = document.getElementById('channelName');
                 this.channelStats = document.getElementById('channelStats');
                 this.channelInfo = document.getElementById('channelInfo');
                 this.loading = document.getElementById('loading');
-                this.muteStatus = document.getElementById('muteStatus');
-                this.filterStatus = document.getElementById('filterStatus');
-
-                // Filter presets
-                this.filterPresets = [
-                    {
-                        name: 'Default',
-                        filter: 'brightness(0.85) contrast(0.9) saturate(0.95) sepia(0.05) hue-rotate(-5deg)'
-                    },
-                    {
-                        name: 'Cinematic',
-                        filter: 'brightness(0.8) contrast(0.85) saturate(0.9) sepia(0.1) hue-rotate(-10deg)'
-                    },
-                    {
-                        name: 'Retro TV',
-                        filter: 'brightness(0.75) contrast(0.8) saturate(0.8) sepia(0.15) blur(0.5px)'
-                    },
-                    {
-                        name: 'Night Mode',
-                        filter: 'brightness(0.7) contrast(0.75) saturate(0.85) sepia(0.2) hue-rotate(-15deg)'
-                    }
-                ];
 
                 this.loadChannels();
+                this.setupControls();
+                this.setupVideoEvents();
+                this.setupURLHandling();
             }
 
             async loadChannels() {
                 try {
-                    const response = await fetch('channels_clustered.json');
+                    this.showLoading();
+                    const response = await fetch('channels_clustered_stream.json');
                     const data = await response.json();
-                    this.channels = data.channels;
+                    this.channels = data.channels || data; // Handle both {channels: [...]} and [...] formats
                     
-                    if (this.channels.length === 0) {
-                        this.showError('No channels found!<br>Run update_clustered_channels.py');
-                        return;
+                    if (!this.channels || this.channels.length === 0) {
+                        throw new Error('No channels found');
+                    }
+
+                    console.log(`Loaded ${this.channels.length} channels with Stream URLs`);
+                    
+                    // Check URL for channel number
+                    const urlChannel = this.getChannelFromURL();
+                    if (urlChannel !== null && urlChannel >= 0 && urlChannel < this.channels.length) {
+                        this.currentChannel = urlChannel;
                     }
                     
-                    console.log(`📺 Loaded ${this.channels.length} clustered channels`);
-                    this.init();
+                    // Initialize channel
+                    this.shuffleCurrentChannel();
+                    this.updateChannelDisplay();
+                    this.loadCurrentVideo();
+                    this.showChannelInfo();
+                    
+                    setTimeout(() => this.hideChannelInfo(), 3000);
+                    
                 } catch (error) {
-                    this.showError('channels_clustered.json not found!<br>Run update_clustered_channels.py first');
+                    console.error('Failed to load channels:', error);
+                    this.showError('Failed to load channel data');
                 }
             }
 
-            init() {
-                this.setupEventListeners();
-                this.shuffleCurrentChannel();
-                this.loadCurrentVideo();
-                
-                // Hide channel info after 3 seconds
-                setTimeout(() => this.hideChannelInfo(), 3000);
-            }
-
-            setupEventListeners() {
+            setupControls() {
                 document.addEventListener('keydown', (e) => {
-                    // Unmute on first user interaction
-                    if (!this.hasUserInteracted) {
-                        this.hasUserInteracted = true;
-                        this.videoPlayer.muted = false;
-                        this.muteStatus.style.display = 'none';
-                    }
-                    
                     switch(e.code) {
                         case 'ArrowUp':
                             e.preventDefault();
-                            this.changeChannel(1);
+                            this.changeChannel(-1);
                             break;
                         case 'ArrowDown':
                             e.preventDefault();
-                            this.changeChannel(-1);
+                            this.changeChannel(1);
                             break;
-                        case 'Space':
+                        case 'ArrowLeft':
                             e.preventDefault();
-                            this.togglePlayPause();
+                            this.playPreviousVideo();
+                            break;
+                        case 'ArrowRight':
+                            e.preventDefault();
+                            this.playNextVideo();
+                            break;
+                        case 'KeyR':
+                            e.preventDefault();
+                            this.randomChannel();
                             break;
                         case 'KeyM':
                             e.preventDefault();
                             this.toggleMute();
                             break;
-                        case 'KeyB':
-                            e.preventDefault();
-                            this.adjustBrightness(0.05);
-                            break;
-                        case 'KeyV':
-                            e.preventDefault();
-                            this.adjustBrightness(-0.05);
-                            break;
-                        case 'KeyF':
-                            e.preventDefault();
-                            this.cycleFilterPreset();
-                            break;
-                        case 'Digit1':
-                            e.preventDefault();
-                            this.setFilterPreset(0);
-                            break;
-                        case 'Digit2':
-                            e.preventDefault();
-                            this.setFilterPreset(1);
-                            break;
-                        case 'Digit3':
-                            e.preventDefault();
-                            this.setFilterPreset(2);
-                            break;
-                        case 'Digit4':
-                            e.preventDefault();
-                            this.setFilterPreset(3);
-                            break;
                     }
                 });
+            }
 
-                // Also unmute on click
-                document.addEventListener('click', () => {
-                    if (!this.hasUserInteracted) {
-                        this.hasUserInteracted = true;
-                        this.videoPlayer.muted = false;
-                        this.muteStatus.style.display = 'none';
-                    }
-                });
+            toggleMute() {
+                this.video.muted = !this.video.muted;
+                this.showChannelInfo();
+                this.channelStats.textContent = this.video.muted ? '🔇 MUTED' : '🔊 UNMUTED';
+                setTimeout(() => {
+                    this.updateChannelDisplay();
+                    this.hideChannelInfo();
+                }, 1000);
+            }
 
-                this.videoPlayer.addEventListener('ended', () => this.playNextVideo());
-                this.videoPlayer.addEventListener('loadstart', () => this.showLoading());
-                this.videoPlayer.addEventListener('canplay', () => {
-                    this.hideLoading();
-                    this.videoPlayer.playbackRate = 0.7; // Ensure 0.7x speed is maintained
-                    this.applyCurrentFilter(); // Apply filter when video loads
-                });
-                this.videoPlayer.addEventListener('error', () => {
-                    console.error('Video failed to load, trying next video');
+            setupVideoEvents() {
+                // Auto-advance to next video when current one ends
+                this.video.addEventListener('ended', () => {
+                    console.log('Video ended, playing next...');
                     this.playNextVideo();
+                });
+
+                // Hide loading when video starts playing
+                this.video.addEventListener('playing', () => {
+                    console.log('Video playing - hiding loading');
+                    this.hideLoading();
+                    console.log('Loading display:', this.loading.style.display);
+                });
+
+                // Show loading when video is buffering
+                this.video.addEventListener('waiting', () => {
+                    this.showLoading();
+                });
+
+                // Handle errors
+                this.video.addEventListener('error', (e) => {
+                    console.error('Video error:', e);
+                    // Skip to next video on error
+                    setTimeout(() => this.playNextVideo(), 1000);
                 });
             }
 
@@ -370,30 +443,113 @@
 
             changeChannel(direction) {
                 this.currentChannel = (this.currentChannel + direction + this.channels.length) % this.channels.length;
+                this.currentVideoIndex = 0;
                 this.shuffleCurrentChannel();
                 this.updateChannelDisplay();
+                this.updateURL();
                 this.loadCurrentVideo();
                 this.showChannelInfo();
-                
+                setTimeout(() => this.hideChannelInfo(), 3000);
+            }
+
+            randomChannel() {
+                const newChannel = Math.floor(Math.random() * this.channels.length);
+                this.currentChannel = newChannel;
+                this.currentVideoIndex = 0;
+                this.shuffleCurrentChannel();
+                this.updateChannelDisplay();
+                this.updateURL();
+                this.loadCurrentVideo();
+                this.showChannelInfo();
                 setTimeout(() => this.hideChannelInfo(), 3000);
             }
 
             updateChannelDisplay() {
                 const channel = this.channels[this.currentChannel];
                 this.channelNumber.textContent = `CH ${this.currentChannel + 1}`;
-                this.channelName.textContent = channel.name;
                 this.channelStats.textContent = `📊 ${channel.videos.length} videos in this cluster`;
             }
 
             loadCurrentVideo() {
                 const channel = this.channels[this.currentChannel];
-                const videoFile = channel.shuffledVideos[this.currentVideoIndex];
-                const videoPath = `${channel.folder}/${videoFile}`;
+                const videoData = channel.shuffledVideos[this.currentVideoIndex];
                 
                 this.showLoading();
-                this.videoPlayer.src = videoPath;
-                this.videoPlayer.playbackRate = 0.7; // Set playback speed to 0.7x
-                this.videoPlayer.load();
+                
+                // Extract video ID from iframe URL
+                // URL format: https://customer-8l6qnv6y72wms6uk.cloudflarestream.com/{VIDEO_ID}/iframe
+                const urlParts = videoData.url.split('/');
+                const videoId = urlParts[urlParts.length - 2]; // Second to last part is the video ID
+                const hlsUrl = `https://customer-8l6qnv6y72wms6uk.cloudflarestream.com/${videoId}/manifest/video.m3u8`;
+                
+                console.log(`Loading video ${this.currentVideoIndex + 1}/${channel.shuffledVideos.length}: ${videoData.filename}`);
+                console.log('Video ID:', videoId);
+                console.log('HLS URL:', hlsUrl);
+                
+                // Check if HLS.js is supported
+                if (Hls.isSupported()) {
+                    // Destroy previous HLS instance if exists
+                    if (this.hls) {
+                        this.hls.destroy();
+                    }
+                    
+                    // Create new HLS instance
+                    this.hls = new Hls({
+                        enableWorker: true,
+                        lowLatencyMode: false,
+                        debug: false,
+                    });
+                    
+                    this.hls.loadSource(hlsUrl);
+                    this.hls.attachMedia(this.video);
+                    
+                    this.hls.on(Hls.Events.MANIFEST_PARSED, () => {
+                        console.log('Manifest parsed, starting playback');
+                        this.video.play().catch(e => {
+                            console.log('Autoplay prevented:', e);
+                            this.hideLoading(); // Hide loading even if autoplay fails
+                        });
+                    });
+                    
+                    this.hls.on(Hls.Events.FRAG_LOADED, () => {
+                        // First fragment loaded, hide loading
+                        this.hideLoading();
+                    });
+                    
+                    this.hls.on(Hls.Events.ERROR, (event, data) => {
+                        console.error('HLS error:', data.type, data.details, data.fatal);
+                        if (data.fatal) {
+                            this.hideLoading();
+                            switch(data.type) {
+                                case Hls.ErrorTypes.NETWORK_ERROR:
+                                    console.log('Network error, skipping to next video');
+                                    setTimeout(() => this.playNextVideo(), 1000);
+                                    break;
+                                case Hls.ErrorTypes.MEDIA_ERROR:
+                                    console.log('Media error, trying to recover');
+                                    this.hls.recoverMediaError();
+                                    break;
+                                default:
+                                    console.log('Fatal error, skipping to next video');
+                                    setTimeout(() => this.playNextVideo(), 1000);
+                                    break;
+                            }
+                        }
+                    });
+                    
+                } else if (this.video.canPlayType('application/vnd.apple.mpegurl')) {
+                    // Native HLS support (Safari)
+                    console.log('Using native HLS support');
+                    this.video.src = hlsUrl;
+                    this.video.play().catch(e => {
+                        console.log('Autoplay prevented:', e);
+                        this.hideLoading();
+                    });
+                } else {
+                    console.error('HLS not supported in this browser');
+                    this.hideLoading();
+                    this.showError('Video playback not supported in this browser');
+                }
             }
 
             playNextVideo() {
@@ -406,85 +562,81 @@
                 }
                 
                 this.loadCurrentVideo();
+                this.showChannelInfo();
+                setTimeout(() => this.hideChannelInfo(), 2000);
             }
 
-            togglePlayPause() {
-                if (this.videoPlayer.paused) {
-                    this.videoPlayer.play();
-                } else {
-                    this.videoPlayer.pause();
-                }
-            }
-
-            toggleMute() {
-                this.videoPlayer.muted = !this.videoPlayer.muted;
-            }
-
-            adjustBrightness(delta) {
-                this.brightness = Math.max(0.3, Math.min(1.2, this.brightness + delta));
-                this.applyCurrentFilter();
-                this.showFilterStatus(`Brightness: ${Math.round(this.brightness * 100)}%`);
-            }
-
-            cycleFilterPreset() {
-                this.currentFilterPreset = (this.currentFilterPreset + 1) % this.filterPresets.length;
-                this.applyCurrentFilter();
-                this.showFilterStatus(`Filter: ${this.filterPresets[this.currentFilterPreset].name}`);
-            }
-
-            setFilterPreset(index) {
-                if (index >= 0 && index < this.filterPresets.length) {
-                    this.currentFilterPreset = index;
-                    this.applyCurrentFilter();
-                    this.showFilterStatus(`Filter: ${this.filterPresets[this.currentFilterPreset].name}`);
-                }
-            }
-
-            applyCurrentFilter() {
-                const preset = this.filterPresets[this.currentFilterPreset];
-                // Replace the brightness value in the preset with the current brightness
-                const filter = preset.filter.replace(/brightness\([^)]*\)/, `brightness(${this.brightness})`);
-                this.videoPlayer.style.filter = filter;
-            }
-
-            showFilterStatus(message) {
-                this.filterStatus.textContent = message;
-                this.filterStatus.style.opacity = '1';
-                
-                // Fade out after 2 seconds
-                setTimeout(() => {
-                    this.filterStatus.style.opacity = '0.7';
-                }, 2000);
-            }
-
-            showChannelInfo() {
-                this.channelInfo.classList.remove('fade-out');
-            }
-
-            hideChannelInfo() {
-                this.channelInfo.classList.add('fade-out');
+            playPreviousVideo() {
+                const channel = this.channels[this.currentChannel];
+                this.currentVideoIndex = (this.currentVideoIndex - 1 + channel.shuffledVideos.length) % channel.shuffledVideos.length;
+                this.loadCurrentVideo();
+                this.showChannelInfo();
+                setTimeout(() => this.hideChannelInfo(), 2000);
             }
 
             showLoading() {
-                this.loading.style.display = 'block';
+                // Keep video visible during loading
+                // No loading indicator shown
             }
 
             hideLoading() {
-                this.loading.style.display = 'none';
+                // Keep video visible during loading
+                // No loading indicator shown
+            }
+
+            showChannelInfo() {
+                this.channelInfo.classList.add('show');
+            }
+
+            hideChannelInfo() {
+                this.channelInfo.classList.remove('show');
+            }
+
+            setupURLHandling() {
+                // Listen for hash changes (back/forward navigation)
+                window.addEventListener('hashchange', () => {
+                    const urlChannel = this.getChannelFromURL();
+                    if (urlChannel !== null && urlChannel !== this.currentChannel) {
+                        this.currentChannel = urlChannel;
+                        this.currentVideoIndex = 0;
+                        this.shuffleCurrentChannel();
+                        this.updateChannelDisplay();
+                        this.loadCurrentVideo();
+                        this.showChannelInfo();
+                        setTimeout(() => this.hideChannelInfo(), 3000);
+                    }
+                });
+            }
+
+            getChannelFromURL() {
+                const hash = window.location.hash;
+                if (hash.startsWith('#ch')) {
+                    const channelNum = parseInt(hash.substring(3));
+                    if (!isNaN(channelNum) && channelNum > 0) {
+                        return channelNum - 1; // Convert to 0-indexed
+                    }
+                }
+                return null;
+            }
+
+            updateURL() {
+                // Update URL hash without triggering hashchange event
+                const channelNum = this.currentChannel + 1; // Convert to 1-indexed
+                window.history.replaceState(null, '', `#ch${channelNum}`);
             }
 
             showError(message) {
                 const errorDiv = document.createElement('div');
                 errorDiv.className = 'error';
-                errorDiv.innerHTML = message;
+                errorDiv.textContent = message;
                 document.querySelector('.screen').appendChild(errorDiv);
                 this.hideLoading();
             }
         }
 
-        // Start the app
+        // Initialize the TV when page loads
         window.addEventListener('DOMContentLoaded', () => {
-            new ClusteredTV();
+            new StreamTV();
         });
     </script>
 </body>

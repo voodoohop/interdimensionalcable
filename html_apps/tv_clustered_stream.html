@@ -286,7 +286,7 @@
 <body>
     <div class="tv-container">
         <div class="screen">
-            <video class="video-player" id="videoPlayer" autoplay></video>
+            <video class="video-player" id="videoPlayer" autoplay muted playsinline></video>
             <div class="static"></div>
             <div class="scanlines"></div>
             <div class="tv-grain"></div>
@@ -302,6 +302,7 @@
                 <div>↑↓ Change Channel</div>
                 <div>← → Skip Video</div>
                 <div>R Random Channel</div>
+                <div>M Toggle Mute</div>
             </div>
         </div>
     </div>
@@ -383,8 +384,22 @@
                             e.preventDefault();
                             this.randomChannel();
                             break;
+                        case 'KeyM':
+                            e.preventDefault();
+                            this.toggleMute();
+                            break;
                     }
                 });
+            }
+
+            toggleMute() {
+                this.video.muted = !this.video.muted;
+                this.showChannelInfo();
+                this.channelStats.textContent = this.video.muted ? '🔇 MUTED' : '🔊 UNMUTED';
+                setTimeout(() => {
+                    this.updateChannelDisplay();
+                    this.hideChannelInfo();
+                }, 1000);
             }
 
             setupVideoEvents() {
