@@ -75,18 +75,23 @@ def upload_video(video_path: str, metadata: Dict) -> Dict:
         print(f"   ❌ Error: {str(e)}")
         return {'success': False, 'filename': filename, 'error': str(e)}
 
-def scan_videos(base_dir: str = 'channels_clustered') -> List[tuple]:
-    """Scan all videos in channels_clustered directory"""
+def scan_videos(base_dir: str = 'channels_reclustered_all') -> List[tuple]:
+    """Scan all videos in channels directory"""
     videos = []
     base_path = Path(base_dir)
     
+    # Support multiple video formats
+    video_extensions = ['*.mp4', '*.webm', '*.mov', '*.avi', '*.mkv']
+    
     for cluster_dir in sorted(base_path.iterdir()):
-        if cluster_dir.is_dir() and cluster_dir.name.startswith(('0', '1', '2', '3')):
+        if cluster_dir.is_dir() and cluster_dir.name.startswith(('0', '1', '2', '3', '4', '5', '6')):
             cluster_name = cluster_dir.name
             cluster_number = cluster_name.split('_')[0]
             
-            for video_file in sorted(cluster_dir.glob('*.mp4')):
-                videos.append((str(video_file), cluster_name, cluster_number))
+            # Scan for all video formats
+            for ext in video_extensions:
+                for video_file in sorted(cluster_dir.glob(ext)):
+                    videos.append((str(video_file), cluster_name, cluster_number))
     
     return videos
 
@@ -97,7 +102,7 @@ def main():
     print()
     
     # Check for existing progress
-    progress_file = 'stream_upload_progress.json'
+    progress_file = 'docs/stream_upload_progress.json'
     existing_results = []
     uploaded_filenames = set()
     
@@ -134,7 +139,7 @@ def main():
     if remaining_videos == 0:
         print("✅ All videos already uploaded!")
         print("Creating final results file...")
-        save_results(existing_results, 'stream_upload_results.json')
+        save_results(existing_results, 'docs/stream_upload_results.json')
         return
     
     # Confirm upload
@@ -193,7 +198,7 @@ def main():
                     
                     # Save progress every 10 videos
                     if completed_count % 10 == 0:
-                        save_results(results, 'stream_upload_progress.json')
+                        save_results(results, 'docs/stream_upload_progress.json')
                         elapsed = time.time() - start_time
                         avg_time = elapsed / completed_count
                         eta = avg_time * (remaining_videos - completed_count)
@@ -203,7 +208,7 @@ def main():
                 print(f"❌ Error processing upload: {e}")
     
     # Save final results
-    save_results(results, 'stream_upload_results.json')
+    save_results(results, 'docs/stream_upload_results.json')
     
     # Print summary
     print("\n" + "=" * 60)
@@ -225,7 +230,7 @@ def main():
             if not r.get('success'):
                 print(f"   - {r.get('filename')}: {r.get('error')}")
     
-    print(f"\n💾 Results saved to: stream_upload_results.json")
+    print(f"\n💾 Results saved to: docs/stream_upload_results.json")
     print("\n📋 Next steps:")
     print("1. Run: python update_channels_with_stream.py")
     print("2. Deploy to Cloudflare Pages")
