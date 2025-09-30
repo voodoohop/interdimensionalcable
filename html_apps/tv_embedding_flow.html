@@ -525,8 +525,8 @@
                         continue;
                     }
                     
-                    // Skip videos that are too similar (less than 5% difference)
-                    if (similarity >= 0.95) {
+                    // Skip videos that are too similar (less than 10% difference)
+                    if (similarity >= 0.90) {
                         console.log(`Skipping too similar video (${(similarity * 100).toFixed(1)}%): ${this.videos[i].filename}`);
                         continue;
                     }
