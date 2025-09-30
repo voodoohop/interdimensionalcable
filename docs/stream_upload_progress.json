@@ -1,7 +1,7 @@
 {
-  "timestamp": "2025-09-29 23:42:54",
-  "total": 590,
-  "successful": 587,
+  "timestamp": "2025-09-30 01:01:49",
+  "total": 660,
+  "successful": 657,
   "failed": 3,
   "results": [
     {
@@ -7647,6 +7647,916 @@
         "cluster": "36_Cluster_35",
         "cluster_number": "36",
         "original_filename": "afropollination I SISSO \u271a MAIKO.mp4",
+        "channel": "Cluster 36"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "7f549449970440783a5adf35892ad9a6",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/7f549449970440783a5adf35892ad9a6/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/7f549449970440783a5adf35892ad9a6/iframe",
+      "filename": "11920046952679762904_sample_0.mp4",
+      "metadata": {
+        "cluster": "32_Cluster_31",
+        "cluster_number": "32",
+        "original_filename": "11920046952679762904_sample_0.mp4",
+        "channel": "Cluster 32"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "e0d0d66399e6cd15e6874466fc28dec4",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/e0d0d66399e6cd15e6874466fc28dec4/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/e0d0d66399e6cd15e6874466fc28dec4/iframe",
+      "filename": "13063254242092914776_sample_0.mp4",
+      "metadata": {
+        "cluster": "32_Cluster_31",
+        "cluster_number": "32",
+        "original_filename": "13063254242092914776_sample_0.mp4",
+        "channel": "Cluster 32"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "e2cf003a9180328fa9256dfd8b7b4867",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/e2cf003a9180328fa9256dfd8b7b4867/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/e2cf003a9180328fa9256dfd8b7b4867/iframe",
+      "filename": "2918497230561834918_sample_0.mp4",
+      "metadata": {
+        "cluster": "30_Cluster_29",
+        "cluster_number": "30",
+        "original_filename": "2918497230561834918_sample_0.mp4",
+        "channel": "Cluster 30"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "6de19c4e4971bca62c668af9244634db",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/6de19c4e4971bca62c668af9244634db/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/6de19c4e4971bca62c668af9244634db/iframe",
+      "filename": "13063254242092914776_sample_1.mp4",
+      "metadata": {
+        "cluster": "32_Cluster_31",
+        "cluster_number": "32",
+        "original_filename": "13063254242092914776_sample_1.mp4",
+        "channel": "Cluster 32"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "610cd09c190349765a8a902251ff9943",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/610cd09c190349765a8a902251ff9943/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/610cd09c190349765a8a902251ff9943/iframe",
+      "filename": "13063254242092914776_sample_2.mp4",
+      "metadata": {
+        "cluster": "32_Cluster_31",
+        "cluster_number": "32",
+        "original_filename": "13063254242092914776_sample_2.mp4",
+        "channel": "Cluster 32"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "0f3b13d31bb4872cb1f85d28c4723e83",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/0f3b13d31bb4872cb1f85d28c4723e83/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/0f3b13d31bb4872cb1f85d28c4723e83/iframe",
+      "filename": "13424649299499842859_sample_0.mp4",
+      "metadata": {
+        "cluster": "32_Cluster_31",
+        "cluster_number": "32",
+        "original_filename": "13424649299499842859_sample_0.mp4",
+        "channel": "Cluster 32"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "3293d5fb707ca2d9e080bfa005af5f26",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/3293d5fb707ca2d9e080bfa005af5f26/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/3293d5fb707ca2d9e080bfa005af5f26/iframe",
+      "filename": "13063254242092914776_sample_3.mp4",
+      "metadata": {
+        "cluster": "32_Cluster_31",
+        "cluster_number": "32",
+        "original_filename": "13063254242092914776_sample_3.mp4",
+        "channel": "Cluster 32"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "53279e0349a5c3b9f9ee309708778b70",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/53279e0349a5c3b9f9ee309708778b70/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/53279e0349a5c3b9f9ee309708778b70/iframe",
+      "filename": "13752405787268393922_sample_0.mp4",
+      "metadata": {
+        "cluster": "32_Cluster_31",
+        "cluster_number": "32",
+        "original_filename": "13752405787268393922_sample_0.mp4",
+        "channel": "Cluster 32"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "d65b80c3e4a7b58091732f2cce629b1f",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/d65b80c3e4a7b58091732f2cce629b1f/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/d65b80c3e4a7b58091732f2cce629b1f/iframe",
+      "filename": "1624261719162102295_sample_0.mp4",
+      "metadata": {
+        "cluster": "32_Cluster_31",
+        "cluster_number": "32",
+        "original_filename": "1624261719162102295_sample_0.mp4",
+        "channel": "Cluster 32"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "f5d6e129f0fef2bf58bffd1adee8976b",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/f5d6e129f0fef2bf58bffd1adee8976b/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/f5d6e129f0fef2bf58bffd1adee8976b/iframe",
+      "filename": "16126016812712024886_sample_0.mp4",
+      "metadata": {
+        "cluster": "32_Cluster_31",
+        "cluster_number": "32",
+        "original_filename": "16126016812712024886_sample_0.mp4",
+        "channel": "Cluster 32"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "3f9a8b972c3b57d78f38ac129166ccc6",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/3f9a8b972c3b57d78f38ac129166ccc6/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/3f9a8b972c3b57d78f38ac129166ccc6/iframe",
+      "filename": "17342549327768575548_sample_0.mp4",
+      "metadata": {
+        "cluster": "32_Cluster_31",
+        "cluster_number": "32",
+        "original_filename": "17342549327768575548_sample_0.mp4",
+        "channel": "Cluster 32"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "f97da6117d3b9413e53bb862017f55f3",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/f97da6117d3b9413e53bb862017f55f3/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/f97da6117d3b9413e53bb862017f55f3/iframe",
+      "filename": "1639696085272993467_sample_0.mp4",
+      "metadata": {
+        "cluster": "32_Cluster_31",
+        "cluster_number": "32",
+        "original_filename": "1639696085272993467_sample_0.mp4",
+        "channel": "Cluster 32"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "0058e68bef1ddfe1fbb8412f0440caa9",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/0058e68bef1ddfe1fbb8412f0440caa9/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/0058e68bef1ddfe1fbb8412f0440caa9/iframe",
+      "filename": "17865790691136020206_sample_0.mp4",
+      "metadata": {
+        "cluster": "32_Cluster_31",
+        "cluster_number": "32",
+        "original_filename": "17865790691136020206_sample_0.mp4",
+        "channel": "Cluster 32"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "3931b6b22d68db71a5afaa2e20adda4c",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/3931b6b22d68db71a5afaa2e20adda4c/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/3931b6b22d68db71a5afaa2e20adda4c/iframe",
+      "filename": "18191561524323662339_sample_0.mp4",
+      "metadata": {
+        "cluster": "32_Cluster_31",
+        "cluster_number": "32",
+        "original_filename": "18191561524323662339_sample_0.mp4",
+        "channel": "Cluster 32"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "6283c10f078a7f80f921d4ace1b39494",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/6283c10f078a7f80f921d4ace1b39494/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/6283c10f078a7f80f921d4ace1b39494/iframe",
+      "filename": "4283289716371976569_sample_0.mp4",
+      "metadata": {
+        "cluster": "32_Cluster_31",
+        "cluster_number": "32",
+        "original_filename": "4283289716371976569_sample_0.mp4",
+        "channel": "Cluster 32"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "97dd1766cedab542bbfa35b7eec5f1d1",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/97dd1766cedab542bbfa35b7eec5f1d1/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/97dd1766cedab542bbfa35b7eec5f1d1/iframe",
+      "filename": "5294217616513776573_sample_0.mp4",
+      "metadata": {
+        "cluster": "32_Cluster_31",
+        "cluster_number": "32",
+        "original_filename": "5294217616513776573_sample_0.mp4",
+        "channel": "Cluster 32"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "4763e0027d0e7b89f57d1c9fde8ce795",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/4763e0027d0e7b89f57d1c9fde8ce795/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/4763e0027d0e7b89f57d1c9fde8ce795/iframe",
+      "filename": "6100441580147696702_sample_0.mp4",
+      "metadata": {
+        "cluster": "32_Cluster_31",
+        "cluster_number": "32",
+        "original_filename": "6100441580147696702_sample_0.mp4",
+        "channel": "Cluster 32"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "4e233664fb8a8c791f8ffdd225acc6f9",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/4e233664fb8a8c791f8ffdd225acc6f9/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/4e233664fb8a8c791f8ffdd225acc6f9/iframe",
+      "filename": "5965726888207937713_sample_0.mp4",
+      "metadata": {
+        "cluster": "32_Cluster_31",
+        "cluster_number": "32",
+        "original_filename": "5965726888207937713_sample_0.mp4",
+        "channel": "Cluster 32"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "c7b3453a8e1a9ced36677bb531ba41fa",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/c7b3453a8e1a9ced36677bb531ba41fa/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/c7b3453a8e1a9ced36677bb531ba41fa/iframe",
+      "filename": "7143517584709386310_sample_0.mp4",
+      "metadata": {
+        "cluster": "32_Cluster_31",
+        "cluster_number": "32",
+        "original_filename": "7143517584709386310_sample_0.mp4",
+        "channel": "Cluster 32"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "34781a47e7f653b5680c9a702b774960",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/34781a47e7f653b5680c9a702b774960/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/34781a47e7f653b5680c9a702b774960/iframe",
+      "filename": "6230063330892486166_sample_0.mp4",
+      "metadata": {
+        "cluster": "32_Cluster_31",
+        "cluster_number": "32",
+        "original_filename": "6230063330892486166_sample_0.mp4",
+        "channel": "Cluster 32"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "2bf93a82b328327561a40654b6b7a3ad",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/2bf93a82b328327561a40654b6b7a3ad/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/2bf93a82b328327561a40654b6b7a3ad/iframe",
+      "filename": "7740599293422113702_sample_0.mp4",
+      "metadata": {
+        "cluster": "32_Cluster_31",
+        "cluster_number": "32",
+        "original_filename": "7740599293422113702_sample_0.mp4",
+        "channel": "Cluster 32"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "2c1d0f0a2bbabcf62d59d75379879882",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/2c1d0f0a2bbabcf62d59d75379879882/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/2c1d0f0a2bbabcf62d59d75379879882/iframe",
+      "filename": "8985648798422171678_sample_0.mp4",
+      "metadata": {
+        "cluster": "32_Cluster_31",
+        "cluster_number": "32",
+        "original_filename": "8985648798422171678_sample_0.mp4",
+        "channel": "Cluster 32"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "703eea2dc568ce84ba1a891690ec5808",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/703eea2dc568ce84ba1a891690ec5808/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/703eea2dc568ce84ba1a891690ec5808/iframe",
+      "filename": "827398308330949322_sample_0.mp4",
+      "metadata": {
+        "cluster": "32_Cluster_31",
+        "cluster_number": "32",
+        "original_filename": "827398308330949322_sample_0.mp4",
+        "channel": "Cluster 32"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "f5d13adc8833f91e638a81a324886559",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/f5d13adc8833f91e638a81a324886559/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/f5d13adc8833f91e638a81a324886559/iframe",
+      "filename": "9272983178403778570_sample_0.mp4",
+      "metadata": {
+        "cluster": "32_Cluster_31",
+        "cluster_number": "32",
+        "original_filename": "9272983178403778570_sample_0.mp4",
+        "channel": "Cluster 32"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "f5612f057e7372fdb7cc7430ce1b2ad2",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/f5612f057e7372fdb7cc7430ce1b2ad2/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/f5612f057e7372fdb7cc7430ce1b2ad2/iframe",
+      "filename": "9764194816848723905_sample_0.mp4",
+      "metadata": {
+        "cluster": "32_Cluster_31",
+        "cluster_number": "32",
+        "original_filename": "9764194816848723905_sample_0.mp4",
+        "channel": "Cluster 32"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "3d159da2f60e6b2b7203ef2e97c21035",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/3d159da2f60e6b2b7203ef2e97c21035/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/3d159da2f60e6b2b7203ef2e97c21035/iframe",
+      "filename": "17164630049795818690_sample_0.mp4",
+      "metadata": {
+        "cluster": "34_Cluster_33",
+        "cluster_number": "34",
+        "original_filename": "17164630049795818690_sample_0.mp4",
+        "channel": "Cluster 34"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "6a4c8218813d01df8e6dadfc2580b02c",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/6a4c8218813d01df8e6dadfc2580b02c/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/6a4c8218813d01df8e6dadfc2580b02c/iframe",
+      "filename": "2441658414089370382_sample_0.mp4",
+      "metadata": {
+        "cluster": "34_Cluster_33",
+        "cluster_number": "34",
+        "original_filename": "2441658414089370382_sample_0.mp4",
+        "channel": "Cluster 34"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "27c194ddc73643eb9a4704f00ae1d9b0",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/27c194ddc73643eb9a4704f00ae1d9b0/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/27c194ddc73643eb9a4704f00ae1d9b0/iframe",
+      "filename": "15980441436535608841_sample_0.mp4",
+      "metadata": {
+        "cluster": "35_Cluster_34",
+        "cluster_number": "35",
+        "original_filename": "15980441436535608841_sample_0.mp4",
+        "channel": "Cluster 35"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "05cbf2aca8c93d2dc7a9cbba9ae8c565",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/05cbf2aca8c93d2dc7a9cbba9ae8c565/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/05cbf2aca8c93d2dc7a9cbba9ae8c565/iframe",
+      "filename": "15845736743592127701_sample_0.mp4",
+      "metadata": {
+        "cluster": "35_Cluster_34",
+        "cluster_number": "35",
+        "original_filename": "15845736743592127701_sample_0.mp4",
+        "channel": "Cluster 35"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "32e58828e9af75b6a9bd45888b6592f6",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/32e58828e9af75b6a9bd45888b6592f6/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/32e58828e9af75b6a9bd45888b6592f6/iframe",
+      "filename": "Gen-3 Alpha Turbo 2186522466, Rotating camera Dar, M 5.mp4",
+      "metadata": {
+        "cluster": "34_Cluster_33",
+        "cluster_number": "34",
+        "original_filename": "Gen-3 Alpha Turbo 2186522466, Rotating camera Dar, M 5.mp4",
+        "channel": "Cluster 34"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "c339b9b4956252bd17cbcc17bdc28bbd",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/c339b9b4956252bd17cbcc17bdc28bbd/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/c339b9b4956252bd17cbcc17bdc28bbd/iframe",
+      "filename": "16706029340136463723_sample_0.mp4",
+      "metadata": {
+        "cluster": "35_Cluster_34",
+        "cluster_number": "35",
+        "original_filename": "16706029340136463723_sample_0.mp4",
+        "channel": "Cluster 35"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "14c4136a5d3da0d088bdd72a18554aae",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/14c4136a5d3da0d088bdd72a18554aae/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/14c4136a5d3da0d088bdd72a18554aae/iframe",
+      "filename": "17760562030566509345_sample_0.mp4",
+      "metadata": {
+        "cluster": "35_Cluster_34",
+        "cluster_number": "35",
+        "original_filename": "17760562030566509345_sample_0.mp4",
+        "channel": "Cluster 35"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "f7b3099ad27b45ee58e0d4ae80842f09",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/f7b3099ad27b45ee58e0d4ae80842f09/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/f7b3099ad27b45ee58e0d4ae80842f09/iframe",
+      "filename": "17760562030566509345_sample_1.mp4",
+      "metadata": {
+        "cluster": "35_Cluster_34",
+        "cluster_number": "35",
+        "original_filename": "17760562030566509345_sample_1.mp4",
+        "channel": "Cluster 35"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "286bbd66f7c79626f15534bbc741a99a",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/286bbd66f7c79626f15534bbc741a99a/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/286bbd66f7c79626f15534bbc741a99a/iframe",
+      "filename": "17760562030566509345_sample_2.mp4",
+      "metadata": {
+        "cluster": "35_Cluster_34",
+        "cluster_number": "35",
+        "original_filename": "17760562030566509345_sample_2.mp4",
+        "channel": "Cluster 35"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "dfe38080a9cf058ec4ec717006a3b2e0",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/dfe38080a9cf058ec4ec717006a3b2e0/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/dfe38080a9cf058ec4ec717006a3b2e0/iframe",
+      "filename": "17760562030566509345_sample_3.mp4",
+      "metadata": {
+        "cluster": "35_Cluster_34",
+        "cluster_number": "35",
+        "original_filename": "17760562030566509345_sample_3.mp4",
+        "channel": "Cluster 35"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "31c4284d5dfe1c82b152432c32ebc32c",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/31c4284d5dfe1c82b152432c32ebc32c/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/31c4284d5dfe1c82b152432c32ebc32c/iframe",
+      "filename": "2683877008268586784_sample_1.mp4",
+      "metadata": {
+        "cluster": "35_Cluster_34",
+        "cluster_number": "35",
+        "original_filename": "2683877008268586784_sample_1.mp4",
+        "channel": "Cluster 35"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "766174b53f5fa2d8b33d6f6c6d9f480f",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/766174b53f5fa2d8b33d6f6c6d9f480f/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/766174b53f5fa2d8b33d6f6c6d9f480f/iframe",
+      "filename": "2683877008268586784_sample_2.mp4",
+      "metadata": {
+        "cluster": "35_Cluster_34",
+        "cluster_number": "35",
+        "original_filename": "2683877008268586784_sample_2.mp4",
+        "channel": "Cluster 35"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "80e20b076b13311a76b41fbe896f2bfc",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/80e20b076b13311a76b41fbe896f2bfc/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/80e20b076b13311a76b41fbe896f2bfc/iframe",
+      "filename": "2683877008268586784_sample_3.mp4",
+      "metadata": {
+        "cluster": "35_Cluster_34",
+        "cluster_number": "35",
+        "original_filename": "2683877008268586784_sample_3.mp4",
+        "channel": "Cluster 35"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "a0b46bd5e34c35e9bffeff9fa96fe684",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/a0b46bd5e34c35e9bffeff9fa96fe684/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/a0b46bd5e34c35e9bffeff9fa96fe684/iframe",
+      "filename": "2787534298691340953_sample_0.mp4",
+      "metadata": {
+        "cluster": "35_Cluster_34",
+        "cluster_number": "35",
+        "original_filename": "2787534298691340953_sample_0.mp4",
+        "channel": "Cluster 35"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "74ff89df266dfb9537acd08d8958baae",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/74ff89df266dfb9537acd08d8958baae/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/74ff89df266dfb9537acd08d8958baae/iframe",
+      "filename": "4655706992897168194_sample_0.mp4",
+      "metadata": {
+        "cluster": "35_Cluster_34",
+        "cluster_number": "35",
+        "original_filename": "4655706992897168194_sample_0.mp4",
+        "channel": "Cluster 35"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "50914c4421b78f8af338769c88ea4da6",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/50914c4421b78f8af338769c88ea4da6/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/50914c4421b78f8af338769c88ea4da6/iframe",
+      "filename": "Gen-4 dramatic running past the camera a swamp monster is following them cthulhu appears in quick pursuit dramatic chase found footage handheld camera  the monster is actually cute 3867212717.mp4",
+      "metadata": {
+        "cluster": "35_Cluster_34",
+        "cluster_number": "35",
+        "original_filename": "Gen-4 dramatic running past the camera a swamp monster is following them cthulhu appears in quick pursuit dramatic chase found footage handheld camera  the monster is actually cute 3867212717.mp4",
+        "channel": "Cluster 35"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "85d9ce9a6e193810eefc0e828b190fde",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/85d9ce9a6e193810eefc0e828b190fde/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/85d9ce9a6e193810eefc0e828b190fde/iframe",
+      "filename": "5959108794635915391_sample_0.mp4",
+      "metadata": {
+        "cluster": "35_Cluster_34",
+        "cluster_number": "35",
+        "original_filename": "5959108794635915391_sample_0.mp4",
+        "channel": "Cluster 35"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "2fb9ce44d1a2a6074debba9702b723cf",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/2fb9ce44d1a2a6074debba9702b723cf/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/2fb9ce44d1a2a6074debba9702b723cf/iframe",
+      "filename": "11133773218592231478_sample_0.mp4",
+      "metadata": {
+        "cluster": "36_Cluster_35",
+        "cluster_number": "36",
+        "original_filename": "11133773218592231478_sample_0.mp4",
+        "channel": "Cluster 36"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "e6542b7cbe9e89bb1ce8e2e6c63f31bf",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/e6542b7cbe9e89bb1ce8e2e6c63f31bf/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/e6542b7cbe9e89bb1ce8e2e6c63f31bf/iframe",
+      "filename": "6342118340297300509_sample_0.mp4",
+      "metadata": {
+        "cluster": "35_Cluster_34",
+        "cluster_number": "35",
+        "original_filename": "6342118340297300509_sample_0.mp4",
+        "channel": "Cluster 35"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "946259235a379ed0892c106796eebe71",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/946259235a379ed0892c106796eebe71/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/946259235a379ed0892c106796eebe71/iframe",
+      "filename": "11752215972915355754_sample_0.mp4",
+      "metadata": {
+        "cluster": "36_Cluster_35",
+        "cluster_number": "36",
+        "original_filename": "11752215972915355754_sample_0.mp4",
+        "channel": "Cluster 36"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "ebb4c86cfda51c0eeb27607bc6f4a011",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/ebb4c86cfda51c0eeb27607bc6f4a011/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/ebb4c86cfda51c0eeb27607bc6f4a011/iframe",
+      "filename": "1432229771129546161_sample_0.mp4",
+      "metadata": {
+        "cluster": "36_Cluster_35",
+        "cluster_number": "36",
+        "original_filename": "1432229771129546161_sample_0.mp4",
+        "channel": "Cluster 36"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "1d8ee7f3160b3f322ce7caa37e74128f",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/1d8ee7f3160b3f322ce7caa37e74128f/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/1d8ee7f3160b3f322ce7caa37e74128f/iframe",
+      "filename": "12009189436743218554_sample_0.mp4",
+      "metadata": {
+        "cluster": "36_Cluster_35",
+        "cluster_number": "36",
+        "original_filename": "12009189436743218554_sample_0.mp4",
+        "channel": "Cluster 36"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "c0ecc79003f1b6f2d2f119a4660b20e8",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/c0ecc79003f1b6f2d2f119a4660b20e8/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/c0ecc79003f1b6f2d2f119a4660b20e8/iframe",
+      "filename": "13398608219993125283_sample_0.mp4",
+      "metadata": {
+        "cluster": "36_Cluster_35",
+        "cluster_number": "36",
+        "original_filename": "13398608219993125283_sample_0.mp4",
+        "channel": "Cluster 36"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "d09d167b1b4e403a9dac49c7ebc19f68",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/d09d167b1b4e403a9dac49c7ebc19f68/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/d09d167b1b4e403a9dac49c7ebc19f68/iframe",
+      "filename": "14533896859042027467_sample_0.mp4",
+      "metadata": {
+        "cluster": "36_Cluster_35",
+        "cluster_number": "36",
+        "original_filename": "14533896859042027467_sample_0.mp4",
+        "channel": "Cluster 36"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "16c9b1e69ff2a25315d029c1bd41babc",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/16c9b1e69ff2a25315d029c1bd41babc/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/16c9b1e69ff2a25315d029c1bd41babc/iframe",
+      "filename": "15271977630463042664_sample_0.mp4",
+      "metadata": {
+        "cluster": "36_Cluster_35",
+        "cluster_number": "36",
+        "original_filename": "15271977630463042664_sample_0.mp4",
+        "channel": "Cluster 36"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "d376d64747340546be889adce63f5bb1",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/d376d64747340546be889adce63f5bb1/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/d376d64747340546be889adce63f5bb1/iframe",
+      "filename": "16344014412786687102_sample_0.mp4",
+      "metadata": {
+        "cluster": "36_Cluster_35",
+        "cluster_number": "36",
+        "original_filename": "16344014412786687102_sample_0.mp4",
+        "channel": "Cluster 36"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "fd794558d056c0c6e1ef3a264a3e9893",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/fd794558d056c0c6e1ef3a264a3e9893/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/fd794558d056c0c6e1ef3a264a3e9893/iframe",
+      "filename": "17162653713859992470_sample_0.mp4",
+      "metadata": {
+        "cluster": "36_Cluster_35",
+        "cluster_number": "36",
+        "original_filename": "17162653713859992470_sample_0.mp4",
+        "channel": "Cluster 36"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "dd5fcd3228c63167b8297c81f23ec6e4",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/dd5fcd3228c63167b8297c81f23ec6e4/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/dd5fcd3228c63167b8297c81f23ec6e4/iframe",
+      "filename": "17162653713859992470_sample_1.mp4",
+      "metadata": {
+        "cluster": "36_Cluster_35",
+        "cluster_number": "36",
+        "original_filename": "17162653713859992470_sample_1.mp4",
+        "channel": "Cluster 36"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "cf25a88ab42f6645a44bf11c3a7e30c0",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/cf25a88ab42f6645a44bf11c3a7e30c0/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/cf25a88ab42f6645a44bf11c3a7e30c0/iframe",
+      "filename": "17162653713859992470_sample_2.mp4",
+      "metadata": {
+        "cluster": "36_Cluster_35",
+        "cluster_number": "36",
+        "original_filename": "17162653713859992470_sample_2.mp4",
+        "channel": "Cluster 36"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "0488127ab9764af7c7fa9a8eb60b70c8",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/0488127ab9764af7c7fa9a8eb60b70c8/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/0488127ab9764af7c7fa9a8eb60b70c8/iframe",
+      "filename": "18426110989127773480_sample_0.mp4",
+      "metadata": {
+        "cluster": "36_Cluster_35",
+        "cluster_number": "36",
+        "original_filename": "18426110989127773480_sample_0.mp4",
+        "channel": "Cluster 36"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "d06a471f4d1c11f905cf68b83bd01c4f",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/d06a471f4d1c11f905cf68b83bd01c4f/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/d06a471f4d1c11f905cf68b83bd01c4f/iframe",
+      "filename": "17162653713859992470_sample_3.mp4",
+      "metadata": {
+        "cluster": "36_Cluster_35",
+        "cluster_number": "36",
+        "original_filename": "17162653713859992470_sample_3.mp4",
+        "channel": "Cluster 36"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "1d8d204ec3c0a3e0fd1b5be6e72ff3e0",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/1d8d204ec3c0a3e0fd1b5be6e72ff3e0/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/1d8d204ec3c0a3e0fd1b5be6e72ff3e0/iframe",
+      "filename": "18342904920653305225_sample_0.mp4",
+      "metadata": {
+        "cluster": "36_Cluster_35",
+        "cluster_number": "36",
+        "original_filename": "18342904920653305225_sample_0.mp4",
+        "channel": "Cluster 36"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "66648eb826d0e2f43034aed834cba261",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/66648eb826d0e2f43034aed834cba261/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/66648eb826d0e2f43034aed834cba261/iframe",
+      "filename": "3420180401290011695_sample_0.mp4",
+      "metadata": {
+        "cluster": "36_Cluster_35",
+        "cluster_number": "36",
+        "original_filename": "3420180401290011695_sample_0.mp4",
+        "channel": "Cluster 36"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "3c7e44fb6fe27f428a39d9f7ca66f6c8",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/3c7e44fb6fe27f428a39d9f7ca66f6c8/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/3c7e44fb6fe27f428a39d9f7ca66f6c8/iframe",
+      "filename": "2728152940312856244_sample_0.mp4",
+      "metadata": {
+        "cluster": "36_Cluster_35",
+        "cluster_number": "36",
+        "original_filename": "2728152940312856244_sample_0.mp4",
+        "channel": "Cluster 36"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "680c60ac4b82f1ac844578a4ceec8fe9",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/680c60ac4b82f1ac844578a4ceec8fe9/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/680c60ac4b82f1ac844578a4ceec8fe9/iframe",
+      "filename": "6746725884118610211_sample_1.mp4",
+      "metadata": {
+        "cluster": "36_Cluster_35",
+        "cluster_number": "36",
+        "original_filename": "6746725884118610211_sample_1.mp4",
+        "channel": "Cluster 36"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "272ebf66e1fb236f51793826bb95d3c8",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/272ebf66e1fb236f51793826bb95d3c8/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/272ebf66e1fb236f51793826bb95d3c8/iframe",
+      "filename": "6746725884118610211_sample_0.mp4",
+      "metadata": {
+        "cluster": "36_Cluster_35",
+        "cluster_number": "36",
+        "original_filename": "6746725884118610211_sample_0.mp4",
+        "channel": "Cluster 36"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "e667ac8a937e4ff3e981fdfdaa0eeb63",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/e667ac8a937e4ff3e981fdfdaa0eeb63/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/e667ac8a937e4ff3e981fdfdaa0eeb63/iframe",
+      "filename": "3752189221042563631_sample_0.mp4",
+      "metadata": {
+        "cluster": "36_Cluster_35",
+        "cluster_number": "36",
+        "original_filename": "3752189221042563631_sample_0.mp4",
+        "channel": "Cluster 36"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "cc4474d74636e48febc7c245157a3ca0",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/cc4474d74636e48febc7c245157a3ca0/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/cc4474d74636e48febc7c245157a3ca0/iframe",
+      "filename": "6746725884118610211_sample_2.mp4",
+      "metadata": {
+        "cluster": "36_Cluster_35",
+        "cluster_number": "36",
+        "original_filename": "6746725884118610211_sample_2.mp4",
+        "channel": "Cluster 36"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "b0ed7e7047712d9391d9d36b6737b454",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/b0ed7e7047712d9391d9d36b6737b454/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/b0ed7e7047712d9391d9d36b6737b454/iframe",
+      "filename": "6746725884118610211_sample_3.mp4",
+      "metadata": {
+        "cluster": "36_Cluster_35",
+        "cluster_number": "36",
+        "original_filename": "6746725884118610211_sample_3.mp4",
+        "channel": "Cluster 36"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "aae491706417bd15a13e5503a4444c4a",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/aae491706417bd15a13e5503a4444c4a/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/aae491706417bd15a13e5503a4444c4a/iframe",
+      "filename": "7017409533664780624_sample_0.mp4",
+      "metadata": {
+        "cluster": "36_Cluster_35",
+        "cluster_number": "36",
+        "original_filename": "7017409533664780624_sample_0.mp4",
+        "channel": "Cluster 36"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "d3520d9144678d99d044380147fdeb1c",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/d3520d9144678d99d044380147fdeb1c/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/d3520d9144678d99d044380147fdeb1c/iframe",
+      "filename": "17863471450902251063_sample_0.mp4",
+      "metadata": {
+        "cluster": "37_Cluster_36",
+        "cluster_number": "37",
+        "original_filename": "17863471450902251063_sample_0.mp4",
+        "channel": "Cluster 37"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "cad8e9689b5ce8646defcc1d8d318dc8",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/cad8e9689b5ce8646defcc1d8d318dc8/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/cad8e9689b5ce8646defcc1d8d318dc8/iframe",
+      "filename": "9467746788062480531_sample_0.mp4",
+      "metadata": {
+        "cluster": "36_Cluster_35",
+        "cluster_number": "36",
+        "original_filename": "9467746788062480531_sample_0.mp4",
+        "channel": "Cluster 36"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "e7df32e1a1efd32158f1078f7969e66b",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/e7df32e1a1efd32158f1078f7969e66b/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/e7df32e1a1efd32158f1078f7969e66b/iframe",
+      "filename": "6259889561488429733_sample_0.mp4",
+      "metadata": {
+        "cluster": "37_Cluster_36",
+        "cluster_number": "37",
+        "original_filename": "6259889561488429733_sample_0.mp4",
+        "channel": "Cluster 37"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "b417c9633c12ac41cb6328dd4aa4ac15",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/b417c9633c12ac41cb6328dd4aa4ac15/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/b417c9633c12ac41cb6328dd4aa4ac15/iframe",
+      "filename": "3040039732992591320_sample_0.mp4",
+      "metadata": {
+        "cluster": "39_Cluster_38",
+        "cluster_number": "39",
+        "original_filename": "3040039732992591320_sample_0.mp4",
+        "channel": "Cluster 39"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "8924f67f41f53daade18fff769e8eea8",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/8924f67f41f53daade18fff769e8eea8/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/8924f67f41f53daade18fff769e8eea8/iframe",
+      "filename": "7457924289342973380_sample_0.mp4",
+      "metadata": {
+        "cluster": "36_Cluster_35",
+        "cluster_number": "36",
+        "original_filename": "7457924289342973380_sample_0.mp4",
         "channel": "Cluster 36"
       }
     }

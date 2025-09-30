@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🎬 Interdimensional Cable TV - Stream Edition</title>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <style>
         * {
             margin: 0;
@@ -45,13 +46,13 @@
             overflow: hidden;
         }
 
-        .stream-iframe {
+        .video-player {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            border: none;
+            background: #000;
             z-index: 1;
         }
 
@@ -63,12 +64,7 @@
             font-size: 2em;
             text-shadow: 0 0 20px #00ff00;
             z-index: 10;
-            animation: pulse 1.5s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 0.6; }
-            50% { opacity: 1; }
+            display: none;
         }
 
         .channel-info {
@@ -152,6 +148,90 @@
             z-index: 6;
         }
 
+        /* CRT Screen-Door Effect */
+        .screen::before {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: 
+                linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+                linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 7;
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
+
+        /* CRT Flicker Effect */
+        .screen::after {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: rgba(18, 16, 16, 0.1);
+            opacity: 0;
+            z-index: 8;
+            pointer-events: none;
+            animation: flicker 0.15s infinite;
+        }
+
+        @keyframes flicker {
+            0% { opacity: 0.27861; }
+            5% { opacity: 0.34769; }
+            10% { opacity: 0.23604; }
+            15% { opacity: 0.90626; }
+            20% { opacity: 0.18128; }
+            25% { opacity: 0.83891; }
+            30% { opacity: 0.65583; }
+            35% { opacity: 0.67807; }
+            40% { opacity: 0.26559; }
+            45% { opacity: 0.84693; }
+            50% { opacity: 0.96019; }
+            55% { opacity: 0.08594; }
+            60% { opacity: 0.20313; }
+            65% { opacity: 0.71988; }
+            70% { opacity: 0.53455; }
+            75% { opacity: 0.37288; }
+            80% { opacity: 0.71428; }
+            85% { opacity: 0.70419; }
+            90% { opacity: 0.7003; }
+            95% { opacity: 0.36108; }
+            100% { opacity: 0.24387; }
+        }
+
+        /* Animated TV Grain/Noise */
+        .tv-grain {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noise)" opacity="0.05"/></svg>');
+            pointer-events: none;
+            z-index: 9;
+            opacity: 0.4;
+            animation: grain 0.5s steps(10) infinite;
+        }
+
+        @keyframes grain {
+            0%, 100% { transform: translate(0, 0); }
+            10% { transform: translate(-5%, -10%); }
+            20% { transform: translate(-15%, 5%); }
+            30% { transform: translate(7%, -25%); }
+            40% { transform: translate(-5%, 25%); }
+            50% { transform: translate(-15%, 10%); }
+            60% { transform: translate(15%, 0%); }
+            70% { transform: translate(0%, 15%); }
+            80% { transform: translate(3%, 35%); }
+            90% { transform: translate(-10%, 10%); }
+        }
+
         .error {
             position: absolute;
             top: 50%;
@@ -177,20 +257,17 @@
         }
 
         .show {
-            opacity: 1 !important;
-        }
-
-        .hide {
-            opacity: 0 !important;
+            display: block !important;
         }
     </style>
 </head>
 <body>
     <div class="tv-container">
         <div class="screen">
-            <iframe class="stream-iframe" id="streamIframe" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+            <video class="video-player" id="videoPlayer" autoplay controls></video>
             <div class="static"></div>
             <div class="scanlines"></div>
+            <div class="tv-grain"></div>
             <div class="loading" id="loading">LOADING STREAM...</div>
             
             <div class="channel-info" id="channelInfo">
@@ -215,8 +292,9 @@
                 this.channels = [];
                 this.currentChannel = 0;
                 this.currentVideoIndex = 0;
+                this.hls = null; // HLS.js instance
                 
-                this.iframe = document.getElementById('streamIframe');
+                this.video = document.getElementById('videoPlayer');
                 this.channelNumber = document.getElementById('channelNumber');
                 this.channelName = document.getElementById('channelName');
                 this.channelStats = document.getElementById('channelStats');
@@ -225,15 +303,17 @@
 
                 this.loadChannels();
                 this.setupControls();
+                this.setupVideoEvents();
             }
 
             async loadChannels() {
                 try {
                     this.showLoading();
-                    const response = await fetch('channels_clustered_stream_test.json');
-                    this.channels = await response.json();
+                    const response = await fetch('channels_clustered_stream.json');
+                    const data = await response.json();
+                    this.channels = data.channels || data; // Handle both {channels: [...]} and [...] formats
                     
-                    if (this.channels.length === 0) {
+                    if (!this.channels || this.channels.length === 0) {
                         throw new Error('No channels found');
                     }
 
@@ -280,6 +360,33 @@
                 });
             }
 
+            setupVideoEvents() {
+                // Auto-advance to next video when current one ends
+                this.video.addEventListener('ended', () => {
+                    console.log('Video ended, playing next...');
+                    this.playNextVideo();
+                });
+
+                // Hide loading when video starts playing
+                this.video.addEventListener('playing', () => {
+                    console.log('Video playing - hiding loading');
+                    this.hideLoading();
+                    console.log('Loading display:', this.loading.style.display);
+                });
+
+                // Show loading when video is buffering
+                this.video.addEventListener('waiting', () => {
+                    this.showLoading();
+                });
+
+                // Handle errors
+                this.video.addEventListener('error', (e) => {
+                    console.error('Video error:', e);
+                    // Skip to next video on error
+                    setTimeout(() => this.playNextVideo(), 1000);
+                });
+            }
+
             shuffleCurrentChannel() {
                 const channel = this.channels[this.currentChannel];
                 // Create a copy of the videos array and shuffle it
@@ -323,32 +430,84 @@
 
             loadCurrentVideo() {
                 const channel = this.channels[this.currentChannel];
-                const video = channel.shuffledVideos[this.currentVideoIndex];
-                
-                // Video URL is already a Cloudflare Stream URL (iframe or HLS)
-                const streamUrl = video.url;
+                const videoData = channel.shuffledVideos[this.currentVideoIndex];
                 
                 this.showLoading();
                 
-                // If it's an iframe URL, use it directly
-                if (streamUrl.includes('/iframe')) {
-                    this.iframe.src = streamUrl + '?autoplay=true&loop=false&muted=false&preload=true';
-                } 
-                // If it's an HLS URL, convert to iframe
-                else if (streamUrl.includes('.m3u8')) {
-                    const videoId = streamUrl.split('/').find(part => part.length > 20);
-                    const accountId = streamUrl.match(/customer-([a-f0-9]+)/)[1];
-                    this.iframe.src = `https://customer-${accountId}.cloudflarestream.com/${videoId}/iframe?autoplay=true&loop=false&muted=false&preload=true`;
-                }
-                // Fallback: assume it's already a proper Stream URL
-                else {
-                    this.iframe.src = streamUrl;
-                }
+                // Extract video ID from iframe URL
+                // URL format: https://customer-8l6qnv6y72wms6uk.cloudflarestream.com/{VIDEO_ID}/iframe
+                const urlParts = videoData.url.split('/');
+                const videoId = urlParts[urlParts.length - 2]; // Second to last part is the video ID
+                const hlsUrl = `https://customer-8l6qnv6y72wms6uk.cloudflarestream.com/${videoId}/manifest/video.m3u8`;
                 
-                // Hide loading after iframe loads
-                this.iframe.onload = () => {
-                    setTimeout(() => this.hideLoading(), 500);
-                };
+                console.log(`Loading video ${this.currentVideoIndex + 1}/${channel.shuffledVideos.length}: ${videoData.filename}`);
+                console.log('Video ID:', videoId);
+                console.log('HLS URL:', hlsUrl);
+                
+                // Check if HLS.js is supported
+                if (Hls.isSupported()) {
+                    // Destroy previous HLS instance if exists
+                    if (this.hls) {
+                        this.hls.destroy();
+                    }
+                    
+                    // Create new HLS instance
+                    this.hls = new Hls({
+                        enableWorker: true,
+                        lowLatencyMode: false,
+                        debug: false,
+                    });
+                    
+                    this.hls.loadSource(hlsUrl);
+                    this.hls.attachMedia(this.video);
+                    
+                    this.hls.on(Hls.Events.MANIFEST_PARSED, () => {
+                        console.log('Manifest parsed, starting playback');
+                        this.video.play().catch(e => {
+                            console.log('Autoplay prevented:', e);
+                            this.hideLoading(); // Hide loading even if autoplay fails
+                        });
+                    });
+                    
+                    this.hls.on(Hls.Events.FRAG_LOADED, () => {
+                        // First fragment loaded, hide loading
+                        this.hideLoading();
+                    });
+                    
+                    this.hls.on(Hls.Events.ERROR, (event, data) => {
+                        console.error('HLS error:', data.type, data.details, data.fatal);
+                        if (data.fatal) {
+                            this.hideLoading();
+                            switch(data.type) {
+                                case Hls.ErrorTypes.NETWORK_ERROR:
+                                    console.log('Network error, skipping to next video');
+                                    setTimeout(() => this.playNextVideo(), 1000);
+                                    break;
+                                case Hls.ErrorTypes.MEDIA_ERROR:
+                                    console.log('Media error, trying to recover');
+                                    this.hls.recoverMediaError();
+                                    break;
+                                default:
+                                    console.log('Fatal error, skipping to next video');
+                                    setTimeout(() => this.playNextVideo(), 1000);
+                                    break;
+                            }
+                        }
+                    });
+                    
+                } else if (this.video.canPlayType('application/vnd.apple.mpegurl')) {
+                    // Native HLS support (Safari)
+                    console.log('Using native HLS support');
+                    this.video.src = hlsUrl;
+                    this.video.play().catch(e => {
+                        console.log('Autoplay prevented:', e);
+                        this.hideLoading();
+                    });
+                } else {
+                    console.error('HLS not supported in this browser');
+                    this.hideLoading();
+                    this.showError('Video playback not supported in this browser');
+                }
             }
 
             playNextVideo() {
@@ -374,11 +533,17 @@
             }
 
             showLoading() {
-                this.loading.classList.add('show');
+                if (this.loading) {
+                    this.loading.style.display = 'block';
+                    this.loading.style.visibility = 'visible';
+                }
             }
 
             hideLoading() {
-                this.loading.classList.remove('show');
+                if (this.loading) {
+                    this.loading.style.display = 'none';
+                    this.loading.style.visibility = 'hidden';
+                }
             }
 
             showChannelInfo() {

@@ -1,0 +1,131 @@
+/Users/thomash/.pyenv/versions/3.11.11/lib/python3.11/site-packages/umap/umap_.py:1952: UserWarning: n_jobs value 1 overridden to 1 by setting random_state. Use no seed for parallelism.
+  warn(
+/Users/thomash/.pyenv/versions/3.11.11/lib/python3.11/site-packages/sklearn/utils/deprecation.py:151: FutureWarning: 'force_all_finite' was renamed to 'ensure_all_finite' in 1.6 and will be removed in 1.8.
+  warnings.warn(
+/Users/thomash/.pyenv/versions/3.11.11/lib/python3.11/site-packages/sklearn/utils/deprecation.py:151: FutureWarning: 'force_all_finite' was renamed to 'ensure_all_finite' in 1.6 and will be removed in 1.8.
+  warnings.warn(
+/Users/thomash/.pyenv/versions/3.11.11/lib/python3.11/site-packages/umap/umap_.py:1952: UserWarning: n_jobs value 1 overridden to 1 by setting random_state. Use no seed for parallelism.
+  warn(
+🔧 Loading clustering results...
+🔧 Loading CLIP model...
+✅ CLIP model loaded on cpu
+📦 Loading embeddings from cache...
+✅ Loaded 763 cached embeddings
+📦 Using cached clustering results...
+
+🔮 Clustering videos...
+📊 Input: 763 videos with 512-dim embeddings
+   🔸 UMAP: Reducing 512 → 5 dimensions...
+   ✅ UMAP complete: (763, 5)
+   🔸 HDBSCAN: Finding clusters (min_cluster_size=10, min_samples=1)...
+   🔸 Assigning 101 outliers to nearest clusters...
+   🔸 Creating 2D visualization projection...
+
+✅ Clustering complete!
+   📊 Found 39 clusters
+   🔇 0 videos marked as noise/outliers
+
+📈 Cluster sizes:
+   Cluster 0: 16 videos
+   Cluster 1: 12 videos
+   Cluster 2: 16 videos
+   Cluster 3: 15 videos
+   Cluster 4: 12 videos
+   Cluster 5: 10 videos
+   Cluster 6: 19 videos
+   Cluster 7: 28 videos
+   Cluster 8: 12 videos
+   Cluster 9: 10 videos
+   Cluster 10: 12 videos
+   Cluster 11: 10 videos
+   Cluster 12: 10 videos
+   Cluster 13: 14 videos
+   Cluster 14: 12 videos
+   Cluster 15: 21 videos
+   Cluster 16: 31 videos
+   Cluster 17: 21 videos
+   Cluster 18: 47 videos
+   Cluster 19: 24 videos
+   Cluster 20: 12 videos
+   Cluster 21: 12 videos
+   Cluster 22: 20 videos
+   Cluster 23: 19 videos
+   Cluster 24: 20 videos
+   Cluster 25: 16 videos
+   Cluster 26: 18 videos
+   Cluster 27: 16 videos
+   Cluster 28: 11 videos
+   Cluster 29: 20 videos
+   Cluster 30: 33 videos
+   Cluster 31: 24 videos
+   Cluster 32: 20 videos
+   Cluster 33: 17 videos
+   Cluster 34: 16 videos
+   Cluster 35: 25 videos
+   Cluster 36: 24 videos
+   Cluster 37: 16 videos
+   Cluster 38: 72 videos
+
+================================================================================
+🎬 REORGANIZING 763 VIDEOS INTO CLUSTERS
+================================================================================
+
+📊 Summary:
+   • Total videos: 763
+   • Clusters: 39
+   • Noise/outliers: 0
+   • Output directory: channels_clustered
+   • Mode: copy
+
+Creating cluster folders:   0%|          | 0/39 [00:00<?, ?it/s]Creating cluster folders: 100%|██████████| 39/39 [00:00<00:00, 7938.36it/s]
+
+✅ Reorganization complete!
+📁 New structure: channels_clustered/
+📄 Report saved: channels_clustered/reorganization_report.json
+
+📊 Cluster Summary:
+   01_Cluster_0: 16 videos (top: Interdimensional_Sock_Puppet_Theater: 8)
+   02_Cluster_1: 12 videos (top: Interdimensional_Sock_Puppet_Theater: 6)
+   03_Cluster_2: 16 videos (top: Interdimensional_Sock_Puppet_Theater: 8)
+   04_Cluster_3: 15 videos (top: Bureaucratic_Jellyfish_Academy: 6)
+   05_Cluster_4: 12 videos (top: Bureaucratic_Jellyfish_Academy: 4)
+   06_Cluster_5: 10 videos (top: Melancholy_Toaster_Dreams: 10)
+   07_Cluster_6: 19 videos (top: Chaotic_Harmony_Llama_Network: 9)
+   08_Cluster_7: 28 videos (top: Interdimensional_Sock_Puppet_Theater: 10)
+   09_Cluster_8: 12 videos (top: Chaotic_Harmony_Llama_Network: 9)
+   10_Cluster_9: 10 videos (top: Temporal_Sandwich_Art_Gallery: 4)
+   11_Cluster_10: 12 videos (top: Psychedelic_Penguin_News_Network: 5)
+   12_Cluster_11: 10 videos (top: Organic_Robot_Gardening_Show: 3)
+   13_Cluster_12: 10 videos (top: Interdimensional_Sock_Puppet_Theater: 5)
+   14_Cluster_13: 14 videos (top: Interdimensional_Sock_Puppet_Theater: 6)
+   15_Cluster_14: 12 videos (top: Interdimensional_Sock_Puppet_Theater: 6)
+   16_Cluster_15: 21 videos (top: Chaotic_Harmony_Llama_Network: 10)
+   17_Cluster_16: 31 videos (top: Chaotic_Harmony_Llama_Network: 21)
+   18_Cluster_17: 21 videos (top: Interdimensional_Sock_Puppet_Theater: 7)
+   19_Cluster_18: 47 videos (top: Chaotic_Harmony_Llama_Network: 31)
+   20_Cluster_19: 24 videos (top: Caffeinated_Unicorn_Broadcasting: 9)
+   21_Cluster_20: 12 videos (top: Interdimensional_Sock_Puppet_Theater: 5)
+   22_Cluster_21: 12 videos (top: Caffeinated_Unicorn_Broadcasting: 8)
+   23_Cluster_22: 20 videos (top: Chaotic_Harmony_Llama_Network: 17)
+   24_Cluster_23: 19 videos (top: Chaotic_Harmony_Llama_Network: 13)
+   25_Cluster_24: 20 videos (top: Chaotic_Harmony_Llama_Network: 11)
+   26_Cluster_25: 16 videos (top: Aquatic_Telepathy_Communication_Hub: 8)
+   27_Cluster_26: 18 videos (top: Melancholy_Toaster_Dreams: 5)
+   28_Cluster_27: 16 videos (top: Chaotic_Harmony_Llama_Network: 7)
+   29_Cluster_28: 11 videos (top: Melancholy_Toaster_Dreams: 7)
+   30_Cluster_29: 20 videos (top: Chaotic_Harmony_Llama_Network: 10)
+   31_Cluster_30: 33 videos (top: Chaotic_Harmony_Llama_Network: 12)
+   32_Cluster_31: 24 videos (top: 03_Intergallactic_TV: 24)
+   33_Cluster_32: 20 videos (top: Bureaucratic_Jellyfish_Academy: 7)
+   34_Cluster_33: 17 videos (top: Chaotic_Harmony_Llama_Network: 8)
+   35_Cluster_34: 16 videos (top: 03_Intergallactic_TV: 14)
+   36_Cluster_35: 25 videos (top: 03_Intergallactic_TV: 24)
+   37_Cluster_36: 24 videos (top: Chaotic_Harmony_Llama_Network: 16)
+   38_Cluster_37: 16 videos (top: Chaotic_Harmony_Llama_Network: 13)
+   39_Cluster_38: 72 videos (top: Chaotic_Harmony_Llama_Network: 20)
+
+💡 Next steps:
+   1. Review the new folders in channels_clustered/
+   2. Rename cluster folders to meaningful names
+   3. Run: python3 update_channels.py (update channels.json)
+   4. Update tv_app.html to point to new channels folder

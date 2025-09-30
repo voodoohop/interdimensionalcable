@@ -367,7 +367,7 @@ class VideoClusterer:
                 'id': int(cluster_id),
                 'size': len(cluster_videos),
                 'channel_distribution': dict(channel_counts),
-                'sample_videos': [v['name'] for v in cluster_videos[:10]]
+                'sample_videos': [v['name'] for v in cluster_videos]  # Save ALL videos, not just samples
             }
         
         # Save report

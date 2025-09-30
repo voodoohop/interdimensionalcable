@@ -88,9 +88,9 @@ def reorganize_videos(clusterer, output_dir="channels_clustered", mode='copy'):
         # Store stats
         cluster_stats[folder_name] = {
             'cluster_id': int(cluster_id),
-            'size': len(cluster_videos),
-            'files_processed': copied_count,
-            'channel_distribution': dict(sorted(channel_dist.items(), key=lambda x: -x[1])[:5]),
+            'size': int(len(cluster_videos)),
+            'files_processed': int(copied_count),
+            'channel_distribution': {k: int(v) for k, v in sorted(channel_dist.items(), key=lambda x: -x[1])[:5]},
             'sample_videos': [v['name'] for v in cluster_videos[:5]]
         }
     
@@ -99,9 +99,9 @@ def reorganize_videos(clusterer, output_dir="channels_clustered", mode='copy'):
     with open(report_path, 'w') as f:
         json.dump({
             'summary': {
-                'total_videos': len(clusterer.video_files),
-                'num_clusters': num_clusters,
-                'num_noise': num_noise,
+                'total_videos': int(len(clusterer.video_files)),
+                'num_clusters': int(num_clusters),
+                'num_noise': int(num_noise),
                 'mode': mode
             },
             'clusters': cluster_stats

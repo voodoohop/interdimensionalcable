@@ -1,0 +1,13 @@
+📊 Loading clustering results...
+✅ Created channels_reclustered_all/
+
+🎬 Organizing 894 videos into 67 channels...
+
+Traceback (most recent call last):
+  File "/Users/thomash/Documents/GitHub/interdimensionalcable/apply_clustering_results.py", line 101, in <module>
+    stats = apply_clustering()
+            ^^^^^^^^^^^^^^^^^^
+  File "/Users/thomash/Documents/GitHub/interdimensionalcable/apply_clustering_results.py", line 52, in apply_clustering
+    for video_info in cluster_data['videos']:
+                      ~~~~~~~~~~~~^^^^^^^^^^
+KeyError: 'videos'

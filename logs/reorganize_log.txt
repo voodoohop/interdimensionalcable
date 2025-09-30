@@ -1,0 +1,101 @@
+/Users/thomash/.pyenv/versions/3.11.11/lib/python3.11/site-packages/umap/umap_.py:1952: UserWarning: n_jobs value 1 overridden to 1 by setting random_state. Use no seed for parallelism.
+  warn(
+/Users/thomash/.pyenv/versions/3.11.11/lib/python3.11/site-packages/sklearn/utils/deprecation.py:151: FutureWarning: 'force_all_finite' was renamed to 'ensure_all_finite' in 1.6 and will be removed in 1.8.
+  warnings.warn(
+/Users/thomash/.pyenv/versions/3.11.11/lib/python3.11/site-packages/sklearn/utils/deprecation.py:151: FutureWarning: 'force_all_finite' was renamed to 'ensure_all_finite' in 1.6 and will be removed in 1.8.
+  warnings.warn(
+/Users/thomash/.pyenv/versions/3.11.11/lib/python3.11/site-packages/umap/umap_.py:1952: UserWarning: n_jobs value 1 overridden to 1 by setting random_state. Use no seed for parallelism.
+  warn(
+🔧 Loading clustering results...
+🔧 Loading CLIP model...
+✅ CLIP model loaded on cpu
+📦 Loading embeddings from cache...
+✅ Loaded 763 cached embeddings
+📦 Using cached clustering results...
+
+🔮 Clustering videos...
+📊 Input: 763 videos with 512-dim embeddings
+   🔸 UMAP: Reducing 512 → 5 dimensions...
+   ✅ UMAP complete: (763, 5)
+   🔸 HDBSCAN: Finding clusters (min_cluster_size=10, min_samples=1)...
+   🔸 Assigning 101 outliers to nearest clusters...
+   🔸 Creating 2D visualization projection...
+
+✅ Clustering complete!
+   📊 Found 39 clusters
+   🔇 0 videos marked as noise/outliers
+
+📈 Cluster sizes:
+   Cluster 0: 16 videos
+   Cluster 1: 12 videos
+   Cluster 2: 16 videos
+   Cluster 3: 15 videos
+   Cluster 4: 12 videos
+   Cluster 5: 10 videos
+   Cluster 6: 19 videos
+   Cluster 7: 28 videos
+   Cluster 8: 12 videos
+   Cluster 9: 10 videos
+   Cluster 10: 12 videos
+   Cluster 11: 10 videos
+   Cluster 12: 10 videos
+   Cluster 13: 14 videos
+   Cluster 14: 12 videos
+   Cluster 15: 21 videos
+   Cluster 16: 31 videos
+   Cluster 17: 21 videos
+   Cluster 18: 47 videos
+   Cluster 19: 24 videos
+   Cluster 20: 12 videos
+   Cluster 21: 12 videos
+   Cluster 22: 20 videos
+   Cluster 23: 19 videos
+   Cluster 24: 20 videos
+   Cluster 25: 16 videos
+   Cluster 26: 18 videos
+   Cluster 27: 16 videos
+   Cluster 28: 11 videos
+   Cluster 29: 20 videos
+   Cluster 30: 33 videos
+   Cluster 31: 24 videos
+   Cluster 32: 20 videos
+   Cluster 33: 17 videos
+   Cluster 34: 16 videos
+   Cluster 35: 25 videos
+   Cluster 36: 24 videos
+   Cluster 37: 16 videos
+   Cluster 38: 72 videos
+
+================================================================================
+🎬 REORGANIZING 763 VIDEOS INTO CLUSTERS
+================================================================================
+
+📊 Summary:
+   • Total videos: 763
+   • Clusters: 39
+   • Noise/outliers: 0
+   • Output directory: channels_clustered
+   • Mode: copy
+
+Creating cluster folders:   0%|          | 0/39 [00:00<?, ?it/s]Creating cluster folders:   8%|▊         | 3/39 [00:00<00:01, 23.81it/s]Creating cluster folders:  15%|█▌        | 6/39 [00:00<00:01, 22.42it/s]Creating cluster folders:  23%|██▎       | 9/39 [00:00<00:01, 15.23it/s]Creating cluster folders:  28%|██▊       | 11/39 [00:00<00:02, 10.80it/s]Creating cluster folders:  36%|███▌      | 14/39 [00:01<00:01, 12.98it/s]Creating cluster folders:  44%|████▎     | 17/39 [00:01<00:01, 12.79it/s]Creating cluster folders:  49%|████▊     | 19/39 [00:02<00:03,  5.86it/s]Creating cluster folders:  54%|█████▍    | 21/39 [00:02<00:02,  6.81it/s]Creating cluster folders:  59%|█████▉    | 23/39 [00:02<00:03,  5.04it/s]Creating cluster folders:  62%|██████▏   | 24/39 [00:03<00:03,  4.39it/s]Creating cluster folders:  64%|██████▍   | 25/39 [00:03<00:03,  3.71it/s]Creating cluster folders:  69%|██████▉   | 27/39 [00:04<00:02,  4.47it/s]Creating cluster folders:  72%|███████▏  | 28/39 [00:04<00:02,  4.90it/s]Creating cluster folders:  77%|███████▋  | 30/39 [00:04<00:01,  5.75it/s]Creating cluster folders:  79%|███████▉  | 31/39 [00:04<00:01,  5.87it/s]Creating cluster folders:  82%|████████▏ | 32/39 [00:04<00:01,  6.46it/s]Creating cluster folders:  85%|████████▍ | 33/39 [00:04<00:00,  6.62it/s]Creating cluster folders:  87%|████████▋ | 34/39 [00:05<00:00,  6.25it/s]Creating cluster folders:  90%|████████▉ | 35/39 [00:05<00:00,  6.85it/s]Creating cluster folders:  92%|█████████▏| 36/39 [00:05<00:00,  7.17it/s]Creating cluster folders:  95%|█████████▍| 37/39 [00:06<00:00,  2.30it/s]Creating cluster folders:  97%|█████████▋| 38/39 [00:06<00:00,  2.89it/s]Creating cluster folders: 100%|██████████| 39/39 [00:07<00:00,  1.60it/s]Creating cluster folders: 100%|██████████| 39/39 [00:07<00:00,  4.97it/s]
+Traceback (most recent call last):
+  File "/Users/thomash/Documents/GitHub/interdimensionalcable/reorganize_by_clusters.py", line 176, in <module>
+    main()
+  File "/Users/thomash/Documents/GitHub/interdimensionalcable/reorganize_by_clusters.py", line 166, in main
+    reorganize_videos(clusterer, output_dir=args.output_dir, mode=args.mode)
+  File "/Users/thomash/Documents/GitHub/interdimensionalcable/reorganize_by_clusters.py", line 100, in reorganize_videos
+    json.dump({
+  File "/Users/thomash/.pyenv/versions/3.11.11/lib/python3.11/json/__init__.py", line 179, in dump
+    for chunk in iterable:
+  File "/Users/thomash/.pyenv/versions/3.11.11/lib/python3.11/json/encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "/Users/thomash/.pyenv/versions/3.11.11/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/Users/thomash/.pyenv/versions/3.11.11/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/Users/thomash/.pyenv/versions/3.11.11/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/Users/thomash/.pyenv/versions/3.11.11/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type int64 is not JSON serializable

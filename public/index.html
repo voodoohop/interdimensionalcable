@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎬 Interdimensional Cable TV - Stream Edition</title>
+    <title>Interdimensional Cable TV - Clustered Channels</title>
     <style>
         * {
             margin: 0;
@@ -12,63 +12,50 @@
         }
 
         body {
-            font-family: 'Courier New', monospace;
             background: #000;
+            font-family: 'Courier New', monospace;
             color: #00ff00;
             overflow: hidden;
             height: 100vh;
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
         }
 
         .tv-container {
+            position: relative;
             width: 90vw;
-            max-width: 1400px;
-            height: 85vh;
-            background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
-            border: 15px solid #333;
+            height: 90vh;
+            max-width: 1200px;
+            max-height: 800px;
+            background: #222;
             border-radius: 20px;
+            padding: 40px;
             box-shadow: 
                 0 0 50px rgba(0, 255, 0, 0.3),
-                inset 0 0 30px rgba(0, 0, 0, 0.5);
-            position: relative;
-            padding: 20px;
+                inset 0 0 50px rgba(0, 0, 0, 0.8);
         }
 
         .screen {
+            position: relative;
             width: 100%;
             height: 100%;
             background: #000;
             border-radius: 10px;
-            position: relative;
             overflow: hidden;
+            border: 3px solid #333;
         }
 
-        .stream-iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
+        .video-player {
             width: 100%;
             height: 100%;
-            border: none;
-            z-index: 1;
-        }
-
-        .loading {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 2em;
-            text-shadow: 0 0 20px #00ff00;
-            z-index: 10;
-            animation: pulse 1.5s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 0.6; }
-            50% { opacity: 1; }
+            object-fit: contain;
+            filter: 
+                brightness(0.85)
+                contrast(0.9)
+                saturate(0.95)
+                sepia(0.05)
+                hue-rotate(-5deg);
         }
 
         .channel-info {
@@ -79,8 +66,7 @@
             padding: 20px 30px;
             border-radius: 10px;
             border: 2px solid #00ff00;
-            z-index: 15;
-            opacity: 0;
+            z-index: 10;
             transition: opacity 0.3s ease;
         }
 
@@ -131,7 +117,26 @@
                 );
             pointer-events: none;
             z-index: 5;
-            opacity: 0.5;
+        }
+
+        .loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2.5em;
+            z-index: 15;
+            animation: blink 1s infinite;
+            text-shadow: 0 0 20px #00ff00;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0.3; }
+        }
+
+        .fade-out {
+            opacity: 0 !important;
         }
 
         .scanlines {
@@ -140,8 +145,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: 
-            repeating-linear-gradient(
+            background: repeating-linear-gradient(
                 0deg,
                 transparent,
                 transparent 2px,
@@ -175,23 +179,15 @@
             font-size: 0.8em;
             margin-left: 10px;
         }
-
-        .show {
-            opacity: 1 !important;
-        }
-
-        .hide {
-            opacity: 0 !important;
-        }
     </style>
 </head>
 <body>
     <div class="tv-container">
         <div class="screen">
-            <iframe class="stream-iframe" id="streamIframe" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true"></iframe>
+            <video class="video-player" id="videoPlayer" autoplay muted></video>
             <div class="static"></div>
             <div class="scanlines"></div>
-            <div class="loading" id="loading">LOADING STREAM...</div>
+            <div class="loading" id="loading">LOADING...</div>
             
             <div class="channel-info" id="channelInfo">
                 <div class="channel-number" id="channelNumber">CH 1</div>
@@ -200,83 +196,163 @@
             </div>
             
             <div class="controls-info">
-                <div><strong>🎬 STREAM EDITION</strong></div>
+                <div><strong>🎬 CLUSTERED CHANNELS</strong></div>
                 <div style="margin-top: 10px;">↑↓ Change Channel</div>
-                <div>← → Skip Video</div>
-                <div>R Random Channel</div>
-                <div style="color: #00ff00; margin-top: 5px; font-size: 0.8em;">☁️ Cloudflare Stream</div>
+                <div>SPACE Play/Pause</div>
+                <div>M Mute/Unmute</div>
+                <div>B/V Brightness ±</div>
+                <div>F Filter Presets (1-4)</div>
+                <div id="muteStatus" style="color: #ff6600; margin-top: 5px;">🔇 MUTED - Press any key to enable audio</div>
+                <div id="filterStatus" style="color: #00ff00; margin-top: 5px; font-size: 0.8em;">Filter: Default</div>
             </div>
         </div>
     </div>
 
     <script>
-        class StreamTV {
+        class ClusteredTV {
             constructor() {
                 this.channels = [];
                 this.currentChannel = 0;
                 this.currentVideoIndex = 0;
+                this.hasUserInteracted = false;
+                this.brightness = 0.85;
+                this.currentFilterPreset = 0;
                 
-                this.iframe = document.getElementById('streamIframe');
+                this.videoPlayer = document.getElementById('videoPlayer');
                 this.channelNumber = document.getElementById('channelNumber');
                 this.channelName = document.getElementById('channelName');
                 this.channelStats = document.getElementById('channelStats');
                 this.channelInfo = document.getElementById('channelInfo');
                 this.loading = document.getElementById('loading');
+                this.muteStatus = document.getElementById('muteStatus');
+                this.filterStatus = document.getElementById('filterStatus');
+
+                // Filter presets
+                this.filterPresets = [
+                    {
+                        name: 'Default',
+                        filter: 'brightness(0.85) contrast(0.9) saturate(0.95) sepia(0.05) hue-rotate(-5deg)'
+                    },
+                    {
+                        name: 'Cinematic',
+                        filter: 'brightness(0.8) contrast(0.85) saturate(0.9) sepia(0.1) hue-rotate(-10deg)'
+                    },
+                    {
+                        name: 'Retro TV',
+                        filter: 'brightness(0.75) contrast(0.8) saturate(0.8) sepia(0.15) blur(0.5px)'
+                    },
+                    {
+                        name: 'Night Mode',
+                        filter: 'brightness(0.7) contrast(0.75) saturate(0.85) sepia(0.2) hue-rotate(-15deg)'
+                    }
+                ];
 
                 this.loadChannels();
-                this.setupControls();
             }
 
             async loadChannels() {
                 try {
-                    this.showLoading();
-                    const response = await fetch('channels_clustered_stream_test.json');
-                    this.channels = await response.json();
+                    const response = await fetch('channels_clustered.json');
+                    const data = await response.json();
+                    this.channels = data.channels;
                     
                     if (this.channels.length === 0) {
-                        throw new Error('No channels found');
+                        this.showError('No channels found!<br>Run update_clustered_channels.py');
+                        return;
                     }
-
-                    console.log(`Loaded ${this.channels.length} channels with Stream URLs`);
                     
-                    // Initialize first channel
-                    this.shuffleCurrentChannel();
-                    this.updateChannelDisplay();
-                    this.loadCurrentVideo();
-                    this.showChannelInfo();
-                    
-                    setTimeout(() => this.hideChannelInfo(), 3000);
-                    
+                    console.log(`📺 Loaded ${this.channels.length} clustered channels`);
+                    this.init();
                 } catch (error) {
-                    console.error('Failed to load channels:', error);
-                    this.showError('Failed to load channel data');
+                    this.showError('channels_clustered.json not found!<br>Run update_clustered_channels.py first');
                 }
             }
 
-            setupControls() {
+            init() {
+                this.setupEventListeners();
+                this.shuffleCurrentChannel();
+                this.loadCurrentVideo();
+                
+                // Hide channel info after 3 seconds
+                setTimeout(() => this.hideChannelInfo(), 3000);
+            }
+
+            setupEventListeners() {
                 document.addEventListener('keydown', (e) => {
+                    // Unmute on first user interaction
+                    if (!this.hasUserInteracted) {
+                        this.hasUserInteracted = true;
+                        this.videoPlayer.muted = false;
+                        this.muteStatus.style.display = 'none';
+                    }
+                    
                     switch(e.code) {
                         case 'ArrowUp':
                             e.preventDefault();
-                            this.changeChannel(-1);
+                            this.changeChannel(1);
                             break;
                         case 'ArrowDown':
                             e.preventDefault();
-                            this.changeChannel(1);
+                            this.changeChannel(-1);
                             break;
-                        case 'ArrowLeft':
+                        case 'Space':
                             e.preventDefault();
-                            this.playPreviousVideo();
+                            this.togglePlayPause();
                             break;
-                        case 'ArrowRight':
+                        case 'KeyM':
                             e.preventDefault();
-                            this.playNextVideo();
+                            this.toggleMute();
                             break;
-                        case 'KeyR':
+                        case 'KeyB':
                             e.preventDefault();
-                            this.randomChannel();
+                            this.adjustBrightness(0.05);
+                            break;
+                        case 'KeyV':
+                            e.preventDefault();
+                            this.adjustBrightness(-0.05);
+                            break;
+                        case 'KeyF':
+                            e.preventDefault();
+                            this.cycleFilterPreset();
+                            break;
+                        case 'Digit1':
+                            e.preventDefault();
+                            this.setFilterPreset(0);
+                            break;
+                        case 'Digit2':
+                            e.preventDefault();
+                            this.setFilterPreset(1);
+                            break;
+                        case 'Digit3':
+                            e.preventDefault();
+                            this.setFilterPreset(2);
+                            break;
+                        case 'Digit4':
+                            e.preventDefault();
+                            this.setFilterPreset(3);
                             break;
                     }
+                });
+
+                // Also unmute on click
+                document.addEventListener('click', () => {
+                    if (!this.hasUserInteracted) {
+                        this.hasUserInteracted = true;
+                        this.videoPlayer.muted = false;
+                        this.muteStatus.style.display = 'none';
+                    }
+                });
+
+                this.videoPlayer.addEventListener('ended', () => this.playNextVideo());
+                this.videoPlayer.addEventListener('loadstart', () => this.showLoading());
+                this.videoPlayer.addEventListener('canplay', () => {
+                    this.hideLoading();
+                    this.videoPlayer.playbackRate = 0.7; // Ensure 0.7x speed is maintained
+                    this.applyCurrentFilter(); // Apply filter when video loads
+                });
+                this.videoPlayer.addEventListener('error', () => {
+                    console.error('Video failed to load, trying next video');
+                    this.playNextVideo();
                 });
             }
 
@@ -302,18 +378,6 @@
                 setTimeout(() => this.hideChannelInfo(), 3000);
             }
 
-            randomChannel() {
-                const newChannel = Math.floor(Math.random() * this.channels.length);
-                if (newChannel !== this.currentChannel) {
-                    this.currentChannel = newChannel;
-                    this.shuffleCurrentChannel();
-                    this.updateChannelDisplay();
-                    this.loadCurrentVideo();
-                    this.showChannelInfo();
-                    setTimeout(() => this.hideChannelInfo(), 3000);
-                }
-            }
-
             updateChannelDisplay() {
                 const channel = this.channels[this.currentChannel];
                 this.channelNumber.textContent = `CH ${this.currentChannel + 1}`;
@@ -323,32 +387,13 @@
 
             loadCurrentVideo() {
                 const channel = this.channels[this.currentChannel];
-                const video = channel.shuffledVideos[this.currentVideoIndex];
-                
-                // Video URL is already a Cloudflare Stream URL (iframe or HLS)
-                const streamUrl = video.url;
+                const videoFile = channel.shuffledVideos[this.currentVideoIndex];
+                const videoPath = `${channel.folder}/${videoFile}`;
                 
                 this.showLoading();
-                
-                // If it's an iframe URL, use it directly
-                if (streamUrl.includes('/iframe')) {
-                    this.iframe.src = streamUrl + '?autoplay=true&loop=false&muted=false&preload=true';
-                } 
-                // If it's an HLS URL, convert to iframe
-                else if (streamUrl.includes('.m3u8')) {
-                    const videoId = streamUrl.split('/').find(part => part.length > 20);
-                    const accountId = streamUrl.match(/customer-([a-f0-9]+)/)[1];
-                    this.iframe.src = `https://customer-${accountId}.cloudflarestream.com/${videoId}/iframe?autoplay=true&loop=false&muted=false&preload=true`;
-                }
-                // Fallback: assume it's already a proper Stream URL
-                else {
-                    this.iframe.src = streamUrl;
-                }
-                
-                // Hide loading after iframe loads
-                this.iframe.onload = () => {
-                    setTimeout(() => this.hideLoading(), 500);
-                };
+                this.videoPlayer.src = videoPath;
+                this.videoPlayer.playbackRate = 0.7; // Set playback speed to 0.7x
+                this.videoPlayer.load();
             }
 
             playNextVideo() {
@@ -361,46 +406,85 @@
                 }
                 
                 this.loadCurrentVideo();
-                this.showChannelInfo();
-                setTimeout(() => this.hideChannelInfo(), 2000);
             }
 
-            playPreviousVideo() {
-                const channel = this.channels[this.currentChannel];
-                this.currentVideoIndex = (this.currentVideoIndex - 1 + channel.shuffledVideos.length) % channel.shuffledVideos.length;
-                this.loadCurrentVideo();
-                this.showChannelInfo();
-                setTimeout(() => this.hideChannelInfo(), 2000);
+            togglePlayPause() {
+                if (this.videoPlayer.paused) {
+                    this.videoPlayer.play();
+                } else {
+                    this.videoPlayer.pause();
+                }
             }
 
-            showLoading() {
-                this.loading.classList.add('show');
+            toggleMute() {
+                this.videoPlayer.muted = !this.videoPlayer.muted;
             }
 
-            hideLoading() {
-                this.loading.classList.remove('show');
+            adjustBrightness(delta) {
+                this.brightness = Math.max(0.3, Math.min(1.2, this.brightness + delta));
+                this.applyCurrentFilter();
+                this.showFilterStatus(`Brightness: ${Math.round(this.brightness * 100)}%`);
+            }
+
+            cycleFilterPreset() {
+                this.currentFilterPreset = (this.currentFilterPreset + 1) % this.filterPresets.length;
+                this.applyCurrentFilter();
+                this.showFilterStatus(`Filter: ${this.filterPresets[this.currentFilterPreset].name}`);
+            }
+
+            setFilterPreset(index) {
+                if (index >= 0 && index < this.filterPresets.length) {
+                    this.currentFilterPreset = index;
+                    this.applyCurrentFilter();
+                    this.showFilterStatus(`Filter: ${this.filterPresets[this.currentFilterPreset].name}`);
+                }
+            }
+
+            applyCurrentFilter() {
+                const preset = this.filterPresets[this.currentFilterPreset];
+                // Replace the brightness value in the preset with the current brightness
+                const filter = preset.filter.replace(/brightness\([^)]*\)/, `brightness(${this.brightness})`);
+                this.videoPlayer.style.filter = filter;
+            }
+
+            showFilterStatus(message) {
+                this.filterStatus.textContent = message;
+                this.filterStatus.style.opacity = '1';
+                
+                // Fade out after 2 seconds
+                setTimeout(() => {
+                    this.filterStatus.style.opacity = '0.7';
+                }, 2000);
             }
 
             showChannelInfo() {
-                this.channelInfo.classList.add('show');
+                this.channelInfo.classList.remove('fade-out');
             }
 
             hideChannelInfo() {
-                this.channelInfo.classList.remove('show');
+                this.channelInfo.classList.add('fade-out');
+            }
+
+            showLoading() {
+                this.loading.style.display = 'block';
+            }
+
+            hideLoading() {
+                this.loading.style.display = 'none';
             }
 
             showError(message) {
                 const errorDiv = document.createElement('div');
                 errorDiv.className = 'error';
-                errorDiv.textContent = message;
+                errorDiv.innerHTML = message;
                 document.querySelector('.screen').appendChild(errorDiv);
                 this.hideLoading();
             }
         }
 
-        // Initialize the TV when page loads
+        // Start the app
         window.addEventListener('DOMContentLoaded', () => {
-            new StreamTV();
+            new ClusteredTV();
         });
     </script>
 </body>

@@ -1,0 +1,151 @@
+/Users/thomash/.pyenv/versions/3.11.11/lib/python3.11/site-packages/umap/umap_.py:1952: UserWarning: n_jobs value 1 overridden to 1 by setting random_state. Use no seed for parallelism.
+  warn(
+/Users/thomash/.pyenv/versions/3.11.11/lib/python3.11/site-packages/sklearn/utils/deprecation.py:151: FutureWarning: 'force_all_finite' was renamed to 'ensure_all_finite' in 1.6 and will be removed in 1.8.
+  warnings.warn(
+/Users/thomash/.pyenv/versions/3.11.11/lib/python3.11/site-packages/sklearn/utils/deprecation.py:151: FutureWarning: 'force_all_finite' was renamed to 'ensure_all_finite' in 1.6 and will be removed in 1.8.
+  warnings.warn(
+/Users/thomash/.pyenv/versions/3.11.11/lib/python3.11/site-packages/umap/umap_.py:1952: UserWarning: n_jobs value 1 overridden to 1 by setting random_state. Use no seed for parallelism.
+  warn(
+🔧 Loading CLIP model...
+✅ CLIP model loaded on cpu
+🔍 Scanning channels for videos...
+✅ Found 764 videos across 16 channels
+📦 Loading embeddings from cache...
+✅ Loaded 763 cached embeddings
+
+🔮 Clustering videos...
+📊 Input: 763 videos with 512-dim embeddings
+   🔸 UMAP: Reducing 512 → 5 dimensions...
+   ✅ UMAP complete: (763, 5)
+   🔸 HDBSCAN: Finding clusters (min_cluster_size=3, min_samples=1)...
+   🔸 Assigning 30 outliers to nearest clusters...
+   🔸 Creating 2D visualization projection...
+
+✅ Clustering complete!
+   📊 Found 116 clusters
+   🔇 0 videos marked as noise/outliers
+
+📈 Cluster sizes:
+   Cluster 0: 9 videos
+   Cluster 1: 7 videos
+   Cluster 2: 8 videos
+   Cluster 3: 4 videos
+   Cluster 4: 7 videos
+   Cluster 5: 4 videos
+   Cluster 6: 3 videos
+   Cluster 7: 9 videos
+   Cluster 8: 3 videos
+   Cluster 9: 9 videos
+   Cluster 10: 5 videos
+   Cluster 11: 4 videos
+   Cluster 12: 8 videos
+   Cluster 13: 10 videos
+   Cluster 14: 4 videos
+   Cluster 15: 3 videos
+   Cluster 16: 7 videos
+   Cluster 17: 4 videos
+   Cluster 18: 4 videos
+   Cluster 19: 4 videos
+   Cluster 20: 10 videos
+   Cluster 21: 4 videos
+   Cluster 22: 4 videos
+   Cluster 23: 10 videos
+   Cluster 24: 8 videos
+   Cluster 25: 9 videos
+   Cluster 26: 3 videos
+   Cluster 27: 5 videos
+   Cluster 28: 10 videos
+   Cluster 29: 3 videos
+   Cluster 30: 9 videos
+   Cluster 31: 6 videos
+   Cluster 32: 8 videos
+   Cluster 33: 6 videos
+   Cluster 34: 4 videos
+   Cluster 35: 4 videos
+   Cluster 36: 8 videos
+   Cluster 37: 4 videos
+   Cluster 38: 7 videos
+   Cluster 39: 6 videos
+   Cluster 40: 7 videos
+   Cluster 41: 3 videos
+   Cluster 42: 5 videos
+   Cluster 43: 11 videos
+   Cluster 44: 6 videos
+   Cluster 45: 3 videos
+   Cluster 46: 6 videos
+   Cluster 47: 3 videos
+   Cluster 48: 11 videos
+   Cluster 49: 12 videos
+   Cluster 50: 10 videos
+   Cluster 51: 5 videos
+   Cluster 52: 12 videos
+   Cluster 53: 5 videos
+   Cluster 54: 5 videos
+   Cluster 55: 7 videos
+   Cluster 56: 5 videos
+   Cluster 57: 7 videos
+   Cluster 58: 5 videos
+   Cluster 59: 7 videos
+   Cluster 60: 3 videos
+   Cluster 61: 5 videos
+   Cluster 62: 9 videos
+   Cluster 63: 8 videos
+   Cluster 64: 3 videos
+   Cluster 65: 10 videos
+   Cluster 66: 13 videos
+   Cluster 67: 7 videos
+   Cluster 68: 7 videos
+   Cluster 69: 4 videos
+   Cluster 70: 8 videos
+   Cluster 71: 3 videos
+   Cluster 72: 10 videos
+   Cluster 73: 4 videos
+   Cluster 74: 3 videos
+   Cluster 75: 13 videos
+   Cluster 76: 5 videos
+   Cluster 77: 4 videos
+   Cluster 78: 3 videos
+   Cluster 79: 5 videos
+   Cluster 80: 6 videos
+   Cluster 81: 4 videos
+   Cluster 82: 8 videos
+   Cluster 83: 6 videos
+   Cluster 84: 4 videos
+   Cluster 85: 3 videos
+   Cluster 86: 15 videos
+   Cluster 87: 6 videos
+   Cluster 88: 4 videos
+   Cluster 89: 3 videos
+   Cluster 90: 5 videos
+   Cluster 91: 4 videos
+   Cluster 92: 17 videos
+   Cluster 93: 5 videos
+   Cluster 94: 4 videos
+   Cluster 95: 16 videos
+   Cluster 96: 6 videos
+   Cluster 97: 5 videos
+   Cluster 98: 6 videos
+   Cluster 99: 6 videos
+   Cluster 100: 6 videos
+   Cluster 101: 4 videos
+   Cluster 102: 5 videos
+   Cluster 103: 4 videos
+   Cluster 104: 16 videos
+   Cluster 105: 24 videos
+   Cluster 106: 9 videos
+   Cluster 107: 8 videos
+   Cluster 108: 8 videos
+   Cluster 109: 5 videos
+   Cluster 110: 5 videos
+   Cluster 111: 7 videos
+   Cluster 112: 4 videos
+   Cluster 113: 4 videos
+   Cluster 114: 5 videos
+   Cluster 115: 10 videos
+
+✅ Done!
+
+💡 Next steps:
+   • Review cluster_analysis.json for detailed breakdown
+   • Check video_clusters_visualization.png to see groupings
+   • Adjust --min-cluster-size to get more/fewer clusters
