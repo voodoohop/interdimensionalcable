@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debug - Video Count</title>
+    <style>
+        body { font-family: monospace; padding: 20px; background: #000; color: #0f0; }
+        .info { margin: 10px 0; padding: 10px; border: 1px solid #0f0; }
+    </style>
+</head>
+<body>
+    <h1>🔍 Deployment Debug</h1>
+    <div class="info" id="status">Loading...</div>
+    <div class="info" id="commit">Checking commit...</div>
+    <div class="info" id="videos">Checking videos...</div>
+    
+    <script>
+        async function checkDeployment() {
+            try {
+                // Check video embeddings
+                const response = await fetch('/video_embeddings_with_urls.json');
+                const data = await response.json();
+                const count = data.total_videos || data.videos.length;
+                
+                document.getElementById('videos').innerHTML = `
+                    <strong>Videos in JSON:</strong> ${count}<br>
+                    <strong>Expected:</strong> 1128<br>
+                    <strong>Status:</strong> ${count === 1128 ? '✅ UP TO DATE' : '❌ OLD VERSION (894)'}
+                `;
+                
+                // Check channels
+                const channelsResponse = await fetch('/channels_clustered_stream.json');
+                const channelsData = await channelsResponse.json();
+                const channelCount = channelsData.channels.length;
+                
+                document.getElementById('status').innerHTML = `
+                    <strong>Channels:</strong> ${channelCount}<br>
+                    <strong>Expected:</strong> 80<br>
+                    <strong>Status:</strong> ${channelCount === 80 ? '✅ UP TO DATE' : '❌ OLD VERSION'}
+                `;
+                
+                document.getElementById('commit').innerHTML = `
+                    <strong>Last checked:</strong> ${new Date().toLocaleString()}<br>
+                    <strong>Expected commit:</strong> ff89220 or later
+                `;
+                
+            } catch (error) {
+                document.getElementById('status').innerHTML = `❌ Error: ${error.message}`;
+            }
+        }
+        
+        checkDeployment();
+        setInterval(checkDeployment, 10000); // Check every 10 seconds
+    </script>
+</body>
+</html>
