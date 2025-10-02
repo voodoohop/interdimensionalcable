@@ -1,0 +1,35 @@
+# Exclude video files and large directories
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.webm
+
+# Video directories
+channels/
+channels_clustered/
+channels_reclustered_all/
+videos_combined_for_clustering/
+videos_combined_for_clustering_wrapped/
+generated_videos/
+new_videos_staging/
+new_videos_staging_vkdels/
+
+# Cache and build artifacts
+video_embeddings_cache/
+node_modules/
+.git/
+__pycache__/
+*.pyc
+
+# Large data files
+*.pkl
+*.h5
+
+# Development files
+.env
+.DS_Store
+*.log
+
+# Keep only necessary files for deployment
+# We want: HTML, JSON, CSS, JS files in public/ and html_apps/

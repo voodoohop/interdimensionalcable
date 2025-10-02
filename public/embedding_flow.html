@@ -405,7 +405,7 @@
             async loadVideos() {
                 try {
                     this.showLoading();
-                    const response = await fetch('../video_embeddings_with_urls.json');
+                    const response = await fetch('/video_embeddings_with_urls.json');
                     const data = await response.json();
                     this.videos = data.videos;
                     
