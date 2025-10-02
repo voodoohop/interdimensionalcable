@@ -119,14 +119,21 @@ Examples:
         )
         commit_message = f"Add new videos to channel ({args.prefix})"
     
-    # Step 4: Deploy
+    # Step 4: Export embeddings for embedding flow
+    if args.recluster:
+        run_command(
+            "python3 scripts/utilities/export_embeddings_to_json.py",
+            "Step 4/5: Exporting embeddings for embedding flow"
+        )
+    
+    # Step 5: Deploy
     if not args.no_deploy:
         print(f"\n{'='*60}")
-        print("🚀 Step 4/4: Deploying to production")
+        print("🚀 Step 5/5: Deploying to production")
         print(f"{'='*60}")
         
         run_command(
-            "git add channels_clustered_stream.json public/channels_clustered_stream.json",
+            "git add channels_clustered_stream.json public/channels_clustered_stream.json public/video_embeddings_with_urls.json video_embeddings_with_urls.json",
             "Staging files"
         )
         
@@ -140,10 +147,16 @@ Examples:
             "Pushing to GitHub"
         )
         
+        run_command(
+            "npx wrangler pages deploy public --project-name=interdimensional-cable",
+            "Deploying to Cloudflare Pages"
+        )
+        
         print(f"\n{'='*60}")
         print("✅ DEPLOYMENT COMPLETE!")
         print(f"{'='*60}")
         print("🎉 Your videos are now live on Interdimensional Cable!")
+        print("🌐 https://main.interdimensional-cable.pages.dev")
     else:
         print(f"\n{'='*60}")
         print("✅ PIPELINE COMPLETE (DRY RUN)")

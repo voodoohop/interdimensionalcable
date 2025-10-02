@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Interdimensional Cable - Embedding Flow</title>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: #000;
+            color: #00ff00;
+            overflow: hidden;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .tv-container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+
+        .screen {
+            width: 100%;
+            height: 100%;
+            background: #000;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-player {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            z-index: 1;
+            filter: sepia(0.5) contrast(1.4) brightness(1.0) saturate(0.8);
+        }
+
+        .loading {
+            display: none !important;
+        }
+
+        .video-info {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 12px 18px;
+            border-radius: 8px;
+            border: 2px solid #00ff00;
+            z-index: 100;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            max-width: 400px;
+        }
+
+        .video-info.show {
+            opacity: 1;
+        }
+
+        .video-title {
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-bottom: 5px;
+            text-shadow: 0 0 10px #00ff00;
+            word-wrap: break-word;
+        }
+
+        .video-stats {
+            font-size: 0.75em;
+            opacity: 0.8;
+            margin-top: 3px;
+        }
+
+        .similarity-score {
+            font-size: 0.75em;
+            color: #00ffff;
+            margin-top: 5px;
+            padding-top: 5px;
+            border-top: 1px solid rgba(0, 255, 0, 0.3);
+        }
+
+        .controls-info {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.85);
+            padding: 15px 25px;
+            border-radius: 5px;
+            border: 2px solid rgba(139, 90, 43, 0.6);
+            z-index: 100;
+            font-size: 0.85em;
+            text-align: right;
+            color: rgba(139, 90, 43, 0.9);
+            text-shadow: 0 0 5px rgba(139, 90, 43, 0.3);
+        }
+
+        .static {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(255, 255, 255, 0.08) 2px,
+                    rgba(255, 255, 255, 0.08) 4px
+                );
+            pointer-events: none;
+            z-index: 5;
+            opacity: 0.8;
+            animation: staticNoise 0.2s infinite;
+        }
+        
+        @keyframes staticNoise {
+            0% { opacity: 0.7; }
+            25% { opacity: 0.85; }
+            50% { opacity: 0.75; }
+            75% { opacity: 0.8; }
+            100% { opacity: 0.7; }
+        }
+
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: 
+            repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(139, 90, 43, 0.06) 2px,
+                rgba(139, 90, 43, 0.06) 4px
+            );
+            pointer-events: none;
+            z-index: 6;
+            animation: scanlineMove 8s linear infinite;
+        }
+        
+        @keyframes scanlineMove {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(10px); }
+        }
+
+        .screen::before {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: 
+                radial-gradient(ellipse at center, transparent 0%, rgba(101, 67, 33, 0.4) 100%),
+                linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.35) 50%),
+                linear-gradient(90deg, rgba(139, 90, 43, 0.08), rgba(101, 67, 33, 0.04), rgba(139, 90, 43, 0.08));
+            z-index: 7;
+            background-size: 100% 100%, 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
+
+        .screen::after {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(18, 16, 16, 0.1);
+            opacity: 0;
+            z-index: 8;
+            pointer-events: none;
+            animation: flicker 0.15s infinite;
+        }
+
+        @keyframes flicker {
+            0% { opacity: 0.27861; }
+            5% { opacity: 0.34769; }
+            10% { opacity: 0.23604; }
+            15% { opacity: 0.90626; }
+            20% { opacity: 0.18128; }
+            25% { opacity: 0.83891; }
+            30% { opacity: 0.65583; }
+            35% { opacity: 0.67807; }
+            40% { opacity: 0.26559; }
+            45% { opacity: 0.84693; }
+            50% { opacity: 0.96019; }
+            55% { opacity: 0.08594; }
+            60% { opacity: 0.20313; }
+            65% { opacity: 0.71988; }
+            70% { opacity: 0.53455; }
+            75% { opacity: 0.37288; }
+            80% { opacity: 0.71428; }
+            85% { opacity: 0.70419; }
+            90% { opacity: 0.7003; }
+            95% { opacity: 0.36108; }
+            100% { opacity: 0.24387; }
+        }
+
+        .tv-grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="1.2" numOctaves="5" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noise)" opacity="0.12"/></svg>');
+            pointer-events: none;
+            z-index: 9;
+            opacity: 0.7;
+            mix-blend-mode: overlay;
+            animation: grain 0.3s steps(8) infinite;
+        }
+
+        @keyframes grain {
+            0%, 100% { transform: translate(0, 0); }
+            10% { transform: translate(-5%, -10%); }
+            20% { transform: translate(-15%, 5%); }
+            30% { transform: translate(7%, -25%); }
+            40% { transform: translate(-5%, 25%); }
+            50% { transform: translate(-15%, 10%); }
+            60% { transform: translate(15%, 0%); }
+            70% { transform: translate(0%, 15%); }
+            80% { transform: translate(3%, 35%); }
+            90% { transform: translate(-10%, 10%); }
+        }
+
+        .fullscreen-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid rgba(0, 255, 0, 0.5);
+            border-radius: 8px;
+            padding: 12px;
+            cursor: pointer;
+            z-index: 100;
+            color: #00ff00;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .fullscreen-button:hover {
+            background: rgba(0, 255, 0, 0.2);
+            border-color: #00ff00;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.4);
+        }
+
+        .fullscreen-button:active {
+            transform: scale(0.9);
+        }
+
+        .fullscreen-button svg {
+            display: block;
+        }
+
+        .start-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 200;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: opacity 0.5s ease;
+        }
+
+        .start-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .start-text {
+            font-size: 2.5em;
+            text-shadow: 0 0 20px #00ff00;
+            margin-bottom: 20px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .start-subtext {
+            font-size: 1.2em;
+            opacity: 0.7;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+    </style>
+</head>
+<body>
+    <div class="tv-container">
+        <div class="screen">
+            <div class="start-overlay" id="startOverlay">
+                <div class="start-text">🌊 CLICK TO START</div>
+                <div class="start-subtext">Experience the flow of similar videos</div>
+            </div>
+
+            <video class="video-player" id="videoPlayer" autoplay muted playsinline></video>
+            <div class="static"></div>
+            <div class="scanlines"></div>
+            <div class="tv-grain"></div>
+            <div class="loading" id="loading" style="display: none;">LOADING...</div>
+            
+            <div class="video-info" id="videoInfo">
+                <div class="video-title" id="videoTitle">Loading...</div>
+                <div class="video-stats" id="videoStats"></div>
+                <div class="similarity-score" id="similarityScore"></div>
+            </div>
+            
+            <div class="controls-info">
+                <div>← → Skip Video</div>
+                <div>R Random Jump</div>
+                <div>F Fullscreen</div>
+                <div>SPACE Play/Pause</div>
+            </div>
+            
+            <button class="fullscreen-button" id="fullscreenButton" title="Fullscreen (F)">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        class EmbeddingFlowTV {
+            constructor() {
+                this.videos = [];
+                this.currentIndex = 0;
+                this.hls = null;
+                this.hasStarted = false;
+                this.lastSimilarity = null;
+                this.watchHistory = []; // Track what we've watched
+                
+                this.video = document.getElementById('videoPlayer');
+                this.videoTitle = document.getElementById('videoTitle');
+                this.videoStats = document.getElementById('videoStats');
+                this.videoInfo = document.getElementById('videoInfo');
+                this.loading = document.getElementById('loading');
+                this.similarityScore = document.getElementById('similarityScore');
+                this.startOverlay = document.getElementById('startOverlay');
+
+                this.setupFullscreen();
+                this.setupClickToStart();
+                this.loadVideos();
+                this.setupControls();
+                this.setupVideoEvents();
+                this.setupURLHandling();
+            }
+
+            setupClickToStart() {
+                this.startOverlay.addEventListener('click', () => {
+                    if (!this.hasStarted) {
+                        this.hasStarted = true;
+                        this.startOverlay.classList.add('hidden');
+                        this.video.muted = false;
+                        this.video.play().catch(e => console.log('Play error:', e));
+                    }
+                });
+            }
+
+            setupFullscreen() {
+                const fullscreenButton = document.getElementById('fullscreenButton');
+                const tvContainer = document.querySelector('.tv-container');
+                
+                fullscreenButton.addEventListener('click', () => {
+                    this.toggleFullscreen(tvContainer);
+                });
+            }
+
+            toggleFullscreen(element) {
+                if (!document.fullscreenElement) {
+                    element.requestFullscreen().catch(err => {
+                        console.log('Fullscreen error:', err);
+                    });
+                } else {
+                    document.exitFullscreen();
+                }
+            }
+
+            async loadVideos() {
+                try {
+                    this.showLoading();
+                    const response = await fetch('/video_embeddings_with_urls.json');
+                    const data = await response.json();
+                    this.videos = data.videos;
+                    
+                    if (!this.videos || this.videos.length === 0) {
+                        throw new Error('No videos found');
+                    }
+
+                    console.log(`Loaded ${this.videos.length} videos with embeddings`);
+                    
+                    // Check URL for video index
+                    const urlIndex = this.getVideoIndexFromURL();
+                    if (urlIndex !== null && urlIndex >= 0 && urlIndex < this.videos.length) {
+                        this.currentIndex = urlIndex;
+                    } else {
+                        // Start with a random video
+                        this.currentIndex = Math.floor(Math.random() * this.videos.length);
+                    }
+                    this.watchHistory.push(this.currentIndex);
+                    
+                    this.updateVideoDisplay();
+                    this.loadCurrentVideo();
+                    this.updateURL();
+                    this.showVideoInfo();
+                    
+                    setTimeout(() => this.hideVideoInfo(), 3000);
+                    
+                } catch (error) {
+                    console.error('Failed to load videos:', error);
+                    this.showError('Failed to load video data');
+                }
+            }
+
+            setupControls() {
+                document.addEventListener('keydown', (e) => {
+                    switch(e.code) {
+                        case 'ArrowLeft':
+                            e.preventDefault();
+                            this.playPreviousVideo();
+                            break;
+                        case 'ArrowRight':
+                            e.preventDefault();
+                            this.playNextVideo();
+                            break;
+                        case 'KeyR':
+                            e.preventDefault();
+                            this.randomJump();
+                            break;
+                        case 'KeyF':
+                            e.preventDefault();
+                            this.toggleFullscreen(document.querySelector('.tv-container'));
+                            break;
+                        case 'Space':
+                            e.preventDefault();
+                            if (this.video.paused) {
+                                this.video.play();
+                            } else {
+                                this.video.pause();
+                            }
+                            break;
+                    }
+                });
+            }
+
+            setupVideoEvents() {
+                this.video.addEventListener('ended', () => {
+                    console.log('Video ended, playing next similar video...');
+                    this.playNextVideo();
+                });
+
+                this.video.addEventListener('playing', () => {
+                    this.hideLoading();
+                });
+
+                this.video.addEventListener('waiting', () => {
+                    this.showLoading();
+                });
+
+                this.video.addEventListener('error', (e) => {
+                    console.error('Video error:', e);
+                    setTimeout(() => this.playNextVideo(), 1000);
+                });
+            }
+
+            cosineSimilarity(a, b) {
+                // Calculate cosine similarity between two embedding vectors
+                let dotProduct = 0;
+                let normA = 0;
+                let normB = 0;
+                
+                for (let i = 0; i < a.length; i++) {
+                    dotProduct += a[i] * b[i];
+                    normA += a[i] * a[i];
+                    normB += b[i] * b[i];
+                }
+                
+                return dotProduct / (Math.sqrt(normA) * Math.sqrt(normB));
+            }
+
+            findMostSimilarVideo(currentIndex, excludeRecent = true) {
+                const currentEmbedding = this.videos[currentIndex].embedding;
+                let bestIndex = -1;
+                let bestSimilarity = -1;
+                
+                // Get recently watched videos to avoid repeating too soon
+                const recentlyWatched = excludeRecent 
+                    ? new Set(this.watchHistory.slice(-20)) 
+                    : new Set([currentIndex]);
+                
+                for (let i = 0; i < this.videos.length; i++) {
+                    if (recentlyWatched.has(i)) continue;
+                    
+                    const similarity = this.cosineSimilarity(currentEmbedding, this.videos[i].embedding);
+                    
+                    // Skip videos with identical embeddings (similarity = 1.0)
+                    if (similarity >= 0.9999) {
+                        console.log(`Skipping duplicate embedding: ${this.videos[i].filename}`);
+                        continue;
+                    }
+                    
+                    // Skip videos that are too similar (less than 10% difference)
+                    if (similarity >= 0.90) {
+                        console.log(`Skipping too similar video (${(similarity * 100).toFixed(1)}%): ${this.videos[i].filename}`);
+                        continue;
+                    }
+                    
+                    if (similarity > bestSimilarity) {
+                        bestSimilarity = similarity;
+                        bestIndex = i;
+                    }
+                }
+                
+                // If we couldn't find anything (all videos watched), reset history
+                if (bestIndex === -1) {
+                    console.log('All videos watched, resetting history...');
+                    this.watchHistory = [currentIndex];
+                    return this.findMostSimilarVideo(currentIndex, false);
+                }
+                
+                this.lastSimilarity = bestSimilarity;
+                return bestIndex;
+            }
+
+            updateVideoDisplay() {
+                const video = this.videos[this.currentIndex];
+                this.videoTitle.textContent = video.filename;
+                this.videoStats.textContent = `Video ${this.watchHistory.length} • ${this.videos.length} total`;
+                
+                if (this.lastSimilarity !== null) {
+                    const percentage = (this.lastSimilarity * 100).toFixed(1);
+                    this.similarityScore.textContent = `🔗 ${percentage}% similar to previous`;
+                } else {
+                    this.similarityScore.textContent = '🎲 Random start';
+                }
+            }
+
+            loadCurrentVideo() {
+                const videoData = this.videos[this.currentIndex];
+                
+                this.showLoading();
+                
+                // Extract video ID from iframe URL
+                const urlParts = videoData.url.split('/');
+                const videoId = urlParts[urlParts.length - 2];
+                const hlsUrl = `https://customer-8l6qnv6y72wms6uk.cloudflarestream.com/${videoId}/manifest/video.m3u8`;
+                
+                console.log(`Loading: ${videoData.filename}`);
+                console.log(`Similarity: ${this.lastSimilarity ? (this.lastSimilarity * 100).toFixed(1) + '%' : 'N/A'}`);
+                
+                // Check if HLS.js is supported
+                if (Hls.isSupported()) {
+                    if (this.hls) {
+                        this.hls.destroy();
+                    }
+                    
+                    this.hls = new Hls({
+                        enableWorker: true,
+                        lowLatencyMode: false,
+                        debug: false,
+                    });
+                    
+                    this.hls.loadSource(hlsUrl);
+                    this.hls.attachMedia(this.video);
+                    
+                    this.hls.on(Hls.Events.MANIFEST_PARSED, () => {
+                        this.video.play().catch(e => {
+                            console.log('Autoplay prevented:', e);
+                            this.hideLoading();
+                        });
+                    });
+                    
+                    this.hls.on(Hls.Events.ERROR, (event, data) => {
+                        console.error('HLS error:', data.type, data.details);
+                        if (data.fatal) {
+                            this.hideLoading();
+                            setTimeout(() => this.playNextVideo(), 1000);
+                        }
+                    });
+                    
+                } else if (this.video.canPlayType('application/vnd.apple.mpegurl')) {
+                    console.log('Using native HLS support');
+                    this.video.src = hlsUrl;
+                    this.video.play().catch(e => {
+                        console.log('Autoplay prevented:', e);
+                        this.hideLoading();
+                    });
+                } else {
+                    console.error('HLS not supported in this browser');
+                    this.hideLoading();
+                }
+            }
+
+            playNextVideo() {
+                // Find the most similar video to current one
+                const nextIndex = this.findMostSimilarVideo(this.currentIndex);
+                this.currentIndex = nextIndex;
+                this.watchHistory.push(nextIndex);
+                
+                this.updateVideoDisplay();
+                this.loadCurrentVideo();
+                this.updateURL();
+                this.showVideoInfo();
+                setTimeout(() => this.hideVideoInfo(), 2000);
+            }
+
+            playPreviousVideo() {
+                // Go back in watch history
+                if (this.watchHistory.length > 1) {
+                    this.watchHistory.pop(); // Remove current
+                    this.currentIndex = this.watchHistory[this.watchHistory.length - 1];
+                    this.lastSimilarity = null; // Don't show similarity for going back
+                    
+                    this.updateVideoDisplay();
+                    this.loadCurrentVideo();
+                    this.updateURL();
+                    this.showVideoInfo();
+                    setTimeout(() => this.hideVideoInfo(), 2000);
+                }
+            }
+
+            randomJump() {
+                // Jump to a random video
+                const newIndex = Math.floor(Math.random() * this.videos.length);
+                this.currentIndex = newIndex;
+                this.watchHistory.push(newIndex);
+                this.lastSimilarity = null;
+                
+                this.updateVideoDisplay();
+                this.loadCurrentVideo();
+                this.updateURL();
+                this.showVideoInfo();
+                setTimeout(() => this.hideVideoInfo(), 2000);
+            }
+
+            showLoading() {
+                this.loading.style.display = 'block';
+            }
+
+            hideLoading() {
+                this.loading.style.display = 'none';
+            }
+
+            showVideoInfo() {
+                this.videoInfo.classList.add('show');
+            }
+
+            hideVideoInfo() {
+                this.videoInfo.classList.remove('show');
+            }
+
+            showError(message) {
+                const errorDiv = document.createElement('div');
+                errorDiv.style.cssText = `
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    font-size: 1.5em;
+                    text-align: center;
+                    z-index: 15;
+                    color: #ff0000;
+                    background: rgba(0, 0, 0, 0.9);
+                    padding: 20px;
+                    border-radius: 10px;
+                    border: 2px solid #ff0000;
+                `;
+                errorDiv.textContent = message;
+                document.querySelector('.screen').appendChild(errorDiv);
+                this.hideLoading();
+            }
+
+            setupURLHandling() {
+                // Listen for hash changes (back/forward navigation)
+                window.addEventListener('hashchange', () => {
+                    const urlIndex = this.getVideoIndexFromURL();
+                    if (urlIndex !== null && urlIndex !== this.currentIndex) {
+                        this.currentIndex = urlIndex;
+                        this.watchHistory.push(urlIndex);
+                        this.lastSimilarity = null;
+                        
+                        this.updateVideoDisplay();
+                        this.loadCurrentVideo();
+                        this.showVideoInfo();
+                        setTimeout(() => this.hideVideoInfo(), 3000);
+                    }
+                });
+            }
+
+            getVideoIndexFromURL() {
+                const hash = window.location.hash;
+                if (hash.startsWith('#v')) {
+                    const index = parseInt(hash.substring(2));
+                    if (!isNaN(index) && index >= 0) {
+                        return index;
+                    }
+                }
+                return null;
+            }
+
+            updateURL() {
+                // Update URL hash without triggering hashchange event
+                window.history.replaceState(null, '', `#v${this.currentIndex}`);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            new EmbeddingFlowTV();
+        });
+    </script>
+</body>
+</html>
