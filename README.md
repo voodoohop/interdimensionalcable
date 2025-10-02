@@ -29,6 +29,25 @@
 
 ## 🚀 Quick Start
 
+### 📺 Import and Deploy Videos
+
+**See [`WORKFLOW.md`](WORKFLOW.md) for complete workflow documentation.**
+
+**Simple import (add as new channel):**
+```bash
+python3 import_and_deploy_videos.py <source_directory> --prefix <prefix>
+```
+
+**With semantic reclustering:**
+```bash
+python3 import_and_deploy_videos.py <source_directory> --prefix <prefix> --recluster
+```
+
+**Example:**
+```bash
+python3 import_and_deploy_videos.py generated_videos/batch1 --prefix gen1
+```
+
 ### 🎭 Generate Interdimensional Cable Channel
 
 1. **Install Python dependencies:**

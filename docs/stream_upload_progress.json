@@ -1,7 +1,7 @@
 {
-  "timestamp": "2025-09-30 03:01:24",
-  "total": 885,
-  "successful": 885,
+  "timestamp": "2025-09-30 19:18:02",
+  "total": 895,
+  "successful": 895,
   "failed": 0,
   "results": [
     {
@@ -12392,6 +12392,146 @@
         "cluster_number": "67",
         "original_filename": "[existing]_Gen-4 Turbo the child witch transforms into an owl and flies away fantastical glitch bats witchcraft flying dramatic zoom out  into the clouds jaw-dropping flight 1240549779.mp4",
         "channel": "Cluster 67"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "77bc0032e399c3a54f5f5d7fd902ebad",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/77bc0032e399c3a54f5f5d7fd902ebad/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/77bc0032e399c3a54f5f5d7fd902ebad/iframe",
+      "filename": "[existing]_Gen-4 Retro animation  Flip book Rotoscoping Piano plays itself Recursion Self automation Surrealist conceptual animation Stop motion Argentina realism Minimalism Found footage Many small r.mp4",
+      "full_path": "/Users/thomash/Documents/GitHub/interdimensionalcable/channels_reclustered_all/01_Cluster_0/[existing]_Gen-4 Retro animation  Flip book Rotoscoping Piano plays itself Recursion Self automation Surrealist conceptual animation Stop motion Argentina realism Minimalism Found footage Many small r.mp4",
+      "metadata": {
+        "cluster": "01_Cluster_0",
+        "cluster_number": "01",
+        "original_filename": "[existing]_Gen-4 Retro animation  Flip book Rotoscoping Piano plays itself Recursion Self automation Surrealist conceptual animation Stop motion Argentina realism Minimalism Found footage Many small r.mp4",
+        "channel": "Cluster 01"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "6b4b369a4a8f4c944efdb94d6f116d15",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/6b4b369a4a8f4c944efdb94d6f116d15/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/6b4b369a4a8f4c944efdb94d6f116d15/iframe",
+      "filename": "[existing]_Gen-4 Retro animation  Flip book Rotoscoping Recursion Self automation Surrealist conceptual animation Stop motion Argentina realism Minimalism Found footage Many small retro flip book disp (1).mp4",
+      "full_path": "/Users/thomash/Documents/GitHub/interdimensionalcable/channels_reclustered_all/01_Cluster_0/[existing]_Gen-4 Retro animation  Flip book Rotoscoping Recursion Self automation Surrealist conceptual animation Stop motion Argentina realism Minimalism Found footage Many small retro flip book disp (1).mp4",
+      "metadata": {
+        "cluster": "01_Cluster_0",
+        "cluster_number": "01",
+        "original_filename": "[existing]_Gen-4 Retro animation  Flip book Rotoscoping Recursion Self automation Surrealist conceptual animation Stop motion Argentina realism Minimalism Found footage Many small retro flip book disp (1).mp4",
+        "channel": "Cluster 01"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "7d83440af5b79772b1471dc76918456f",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/7d83440af5b79772b1471dc76918456f/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/7d83440af5b79772b1471dc76918456f/iframe",
+      "filename": "[existing]_Gen-4 Retro animation  Flip book Rotoscoping Recursion Self automation Surrealist conceptual animation Stop motion Argentina realism Minimalism Found footage Many small retro flip book disp.mp4",
+      "full_path": "/Users/thomash/Documents/GitHub/interdimensionalcable/channels_reclustered_all/01_Cluster_0/[existing]_Gen-4 Retro animation  Flip book Rotoscoping Recursion Self automation Surrealist conceptual animation Stop motion Argentina realism Minimalism Found footage Many small retro flip book disp.mp4",
+      "metadata": {
+        "cluster": "01_Cluster_0",
+        "cluster_number": "01",
+        "original_filename": "[existing]_Gen-4 Retro animation  Flip book Rotoscoping Recursion Self automation Surrealist conceptual animation Stop motion Argentina realism Minimalism Found footage Many small retro flip book disp.mp4",
+        "channel": "Cluster 01"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "b1ed6c31fe23a8b05b91a52496d30408",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/b1ed6c31fe23a8b05b91a52496d30408/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/b1ed6c31fe23a8b05b91a52496d30408/iframe",
+      "filename": "[existing]_Gen-4 painted blocks subtle parallaxRetro animation  Flip book Rotoscoping Recursion Self automation Surrealist conceptual animation Stop motion Argentina realism Minimalism Found footage  (1).mp4",
+      "full_path": "/Users/thomash/Documents/GitHub/interdimensionalcable/channels_reclustered_all/01_Cluster_0/[existing]_Gen-4 painted blocks subtle parallaxRetro animation  Flip book Rotoscoping Recursion Self automation Surrealist conceptual animation Stop motion Argentina realism Minimalism Found footage  (1).mp4",
+      "metadata": {
+        "cluster": "01_Cluster_0",
+        "cluster_number": "01",
+        "original_filename": "[existing]_Gen-4 painted blocks subtle parallaxRetro animation  Flip book Rotoscoping Recursion Self automation Surrealist conceptual animation Stop motion Argentina realism Minimalism Found footage  (1).mp4",
+        "channel": "Cluster 01"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "2707b9de8b3fd8b36587f96a40cc4704",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/2707b9de8b3fd8b36587f96a40cc4704/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/2707b9de8b3fd8b36587f96a40cc4704/iframe",
+      "filename": "[existing]_Gen-4 painted blocks subtle parallaxRetro animation  Flip book Rotoscoping Recursion Self automation Surrealist conceptual animation Stop motion Argentina realism Minimalism Found footage  (3).mp4",
+      "full_path": "/Users/thomash/Documents/GitHub/interdimensionalcable/channels_reclustered_all/01_Cluster_0/[existing]_Gen-4 painted blocks subtle parallaxRetro animation  Flip book Rotoscoping Recursion Self automation Surrealist conceptual animation Stop motion Argentina realism Minimalism Found footage  (3).mp4",
+      "metadata": {
+        "cluster": "01_Cluster_0",
+        "cluster_number": "01",
+        "original_filename": "[existing]_Gen-4 painted blocks subtle parallaxRetro animation  Flip book Rotoscoping Recursion Self automation Surrealist conceptual animation Stop motion Argentina realism Minimalism Found footage  (3).mp4",
+        "channel": "Cluster 01"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "c87e3c7fac64ac2f288fd2c4c44477ae",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/c87e3c7fac64ac2f288fd2c4c44477ae/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/c87e3c7fac64ac2f288fd2c4c44477ae/iframe",
+      "filename": "[existing]_Gen-4 painted blocks subtle parallaxRetro animation  Flip book Rotoscoping Recursion Self automation Surrealist conceptual animation Stop motion Argentina realism Minimalism Found footage  (2).mp4",
+      "full_path": "/Users/thomash/Documents/GitHub/interdimensionalcable/channels_reclustered_all/01_Cluster_0/[existing]_Gen-4 painted blocks subtle parallaxRetro animation  Flip book Rotoscoping Recursion Self automation Surrealist conceptual animation Stop motion Argentina realism Minimalism Found footage  (2).mp4",
+      "metadata": {
+        "cluster": "01_Cluster_0",
+        "cluster_number": "01",
+        "original_filename": "[existing]_Gen-4 painted blocks subtle parallaxRetro animation  Flip book Rotoscoping Recursion Self automation Surrealist conceptual animation Stop motion Argentina realism Minimalism Found footage  (2).mp4",
+        "channel": "Cluster 01"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "cd28fcf7fd4aa0fff84ad33abdbaf202",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/cd28fcf7fd4aa0fff84ad33abdbaf202/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/cd28fcf7fd4aa0fff84ad33abdbaf202/iframe",
+      "filename": "[existing]_Gen-4 Turbo c 2156011426.mp4",
+      "full_path": "/Users/thomash/Documents/GitHub/interdimensionalcable/channels_reclustered_all/02_Cluster_1/[existing]_Gen-4 Turbo c 2156011426.mp4",
+      "metadata": {
+        "cluster": "02_Cluster_1",
+        "cluster_number": "02",
+        "original_filename": "[existing]_Gen-4 Turbo c 2156011426.mp4",
+        "channel": "Cluster 02"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "01dd5d2a80c8c338ae6580280868148a",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/01dd5d2a80c8c338ae6580280868148a/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/01dd5d2a80c8c338ae6580280868148a/iframe",
+      "filename": "[existing]_Gen-4 painted blocks subtle parallaxRetro animation  Flip book Rotoscoping Recursion Self automation Surrealist conceptual animation Stop motion Argentina realism Minimalism Found footage .mp4",
+      "full_path": "/Users/thomash/Documents/GitHub/interdimensionalcable/channels_reclustered_all/01_Cluster_0/[existing]_Gen-4 painted blocks subtle parallaxRetro animation  Flip book Rotoscoping Recursion Self automation Surrealist conceptual animation Stop motion Argentina realism Minimalism Found footage .mp4",
+      "metadata": {
+        "cluster": "01_Cluster_0",
+        "cluster_number": "01",
+        "original_filename": "[existing]_Gen-4 painted blocks subtle parallaxRetro animation  Flip book Rotoscoping Recursion Self automation Surrealist conceptual animation Stop motion Argentina realism Minimalism Found footage .mp4",
+        "channel": "Cluster 01"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "0ce24e0d3df6bb4d533b214e7ff2b2e2",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/0ce24e0d3df6bb4d533b214e7ff2b2e2/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/0ce24e0d3df6bb4d533b214e7ff2b2e2/iframe",
+      "filename": "[existing]_Gen-4 Turbo cellular automata retro game recursion demoscene 8bit l-systems lo-fi 8-bit sunrise gradient, floating grid floor, subtle parallax, grain filter, loop with reverse growth neon-cyan .mp4",
+      "full_path": "/Users/thomash/Documents/GitHub/interdimensionalcable/channels_reclustered_all/02_Cluster_1/[existing]_Gen-4 Turbo cellular automata retro game recursion demoscene 8bit l-systems lo-fi 8-bit sunrise gradient, floating grid floor, subtle parallax, grain filter, loop with reverse growth neon-cyan .mp4",
+      "metadata": {
+        "cluster": "02_Cluster_1",
+        "cluster_number": "02",
+        "original_filename": "[existing]_Gen-4 Turbo cellular automata retro game recursion demoscene 8bit l-systems lo-fi 8-bit sunrise gradient, floating grid floor, subtle parallax, grain filter, loop with reverse growth neon-cyan .mp4",
+        "channel": "Cluster 02"
+      }
+    },
+    {
+      "success": true,
+      "video_id": "7c45938e7dc1864c13f079977ef4471b",
+      "playback_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/7c45938e7dc1864c13f079977ef4471b/manifest/video.m3u8",
+      "iframe_url": "https://customer-efdcb0933eaac64f27c0b295039b28f2.cloudflarestream.com/7c45938e7dc1864c13f079977ef4471b/iframe",
+      "filename": "[existing]_Gen-4 Turbo cellular automata retro game recursion demoscene 8bit l-systems lo-fi 8-bit, floating grid floor, subtle parallax, grain filter, loop with reverse growth  pixel-glitch ripples sprea.mp4",
+      "full_path": "/Users/thomash/Documents/GitHub/interdimensionalcable/channels_reclustered_all/02_Cluster_1/[existing]_Gen-4 Turbo cellular automata retro game recursion demoscene 8bit l-systems lo-fi 8-bit, floating grid floor, subtle parallax, grain filter, loop with reverse growth  pixel-glitch ripples sprea.mp4",
+      "metadata": {
+        "cluster": "02_Cluster_1",
+        "cluster_number": "02",
+        "original_filename": "[existing]_Gen-4 Turbo cellular automata retro game recursion demoscene 8bit l-systems lo-fi 8-bit, floating grid floor, subtle parallax, grain filter, loop with reverse growth  pixel-glitch ripples sprea.mp4",
+        "channel": "Cluster 02"
       }
     }
   ]
